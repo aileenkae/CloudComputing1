@@ -1,5 +1,7 @@
 import './App.css';
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import Footer from './components/footer';
+
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
           <p key={i}>{tests}</p>
         ))
       )}
+
+      <Footer/>
 
     </div>
   )
