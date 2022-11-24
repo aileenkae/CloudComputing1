@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useEffect, useState} from 'react';
-import Footer from './components/footer';
+import ResponsiveAppBar from './components/header';
+import BottomNavigation from '@mui/material/BottomNavigation';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <div>
-
+      <ResponsiveAppBar/>
       {(typeof backendData.test === 'undefined') ? (
         <p>Loading...</p>
       ): (
@@ -29,7 +30,8 @@ function App() {
         ))
       )}
 
-      <Footer/>
+      <BottomNavigation/>
+      
 
     </div>
   )
