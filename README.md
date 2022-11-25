@@ -2,7 +2,7 @@
 
 ## Struktur des Projekts
 
-- Backend
+## Backend
     Verbindung starten: 
     1) cd backend
     2) npm start
@@ -10,8 +10,8 @@
     Verbindung beenden:
     1) strg + c 
     
-- Frontend
-   Verbindung starten: 
+## Frontend
+    Verbindung starten: 
     1) cd frontend
     2) npm install 
     3) npm start
@@ -22,7 +22,7 @@
     Ordnerebene nach oben
     1) cd ..
     
- - Branch
+ ## Branch
     - git branch <branch>     --> Create a new branch
     - git checkout <branch>   --> Switch to new branch
     - git add                 --> Add files to branch 
