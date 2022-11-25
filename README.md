@@ -23,12 +23,12 @@
     1) cd ..
     
  - Branch
-    # git branch <branch>     --> Create a new branch
-    # git checkout <branch>   --> Switch to new branch
-    # git add                 --> Add files to branch 
-    # git add .               --> Add all files to branch 
-    # git commit              
-    # git commit -m 'text'    --> Commit with message text for change 
-    
-    # git push                --> Load Branch in GitHub
+    - git branch <branch>     --> Create a new branch
+    - git checkout <branch>   --> Switch to new branch
+    - git add                 --> Add files to branch 
+    - git add .               --> Add all files to branch 
+    - git commit              
+    - git commit -m 'text'    --> Commit with message text for change 
+   
+    - git push                --> Load Branch in GitHub
      
