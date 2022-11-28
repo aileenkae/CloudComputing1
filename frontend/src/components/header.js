@@ -64,7 +64,7 @@ function ResponsiveAppBar() {
             <IconButton><SearchIcon /></IconButton>
             <input type="text" name="search" placeholder='Search'/>
           </div>
-                
+              
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
