@@ -12,6 +12,7 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Description';
+import SearchIcon from '@mui/icons-material/Search';
 
 //const pages = ['Home', 'Formular'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -58,6 +59,12 @@ function ResponsiveAppBar() {
           >
             Form Clone
           </Typography>
+
+          <div className="header_search" style={{display:'flex', flexDirection:'row', width: 700}}>
+            <IconButton><SearchIcon /></IconButton>
+            <input type="text" name="search" placeholder='Search'/>
+          </div>
+                
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton

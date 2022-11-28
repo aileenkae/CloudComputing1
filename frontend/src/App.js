@@ -2,6 +2,7 @@ import './App.css';
 import React, {useEffect, useState} from 'react';
 import ResponsiveAppBar from './components/header';
 import BottomNavigation from '@mui/material/BottomNavigation';
+import Body from './components/body';
 
 
 function App() {
@@ -22,16 +23,16 @@ function App() {
   return (
     <div>
       <ResponsiveAppBar/>
-      {(typeof backendData.test === 'undefined') ? (
+      {/*(typeof backendData.test === 'undefined') ? (
         <p>Loading...</p>
       ): (
         backendData.test.map((tests,i) => (
           <p key={i}>{tests}</p>
         ))
-      )}
+        )*/}
 
       <BottomNavigation/>
-      
+      <Body />
 
     </div>
   )
