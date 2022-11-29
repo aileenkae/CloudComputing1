@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './header.css'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -37,36 +38,21 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" style={{backgroundColor: '#AADAB8'}}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, fontSize: "3rem", mr: 1 }} />
+    <div className='header' style={{ backgroundColor:'#AADAB8', maxWidth:'xl'  }} >
+          <AdbIcon className='header' style={{ display:'flex', fontSize: "3rem", color:'#f4f4f9'}} />
           {/* Logo Text */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'Helvetica',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Form Clone
+          <Typography className='header' variant="h6"  component="a"   href="/"
+            sx={{ fontWeight: 700, letterSpacing: '.3rem',  color: '#f4f4f9',  textDecoration: 'none' }}   >
+            Form
           </Typography>
 
-          <div className="header_search" style={{display:'flex', flexDirection:'row', width: 700}}>
-            <IconButton><SearchIcon /></IconButton>
-            <input type="text" name="search" placeholder='Search'/>
+          <div className="header" style={{ display:'flex', flexDirection:'row', width: 700, height: 45, alignItems:'center', backgroundColor: '#f4f4f9', borderRadius:5}}>
+            <IconButton ><SearchIcon  /></IconButton>
+            <input type="text" name="search" placeholder='Search' style={{border:'none', height:40, background:'transperant', outline:'none', widh:'100%' }} />
           </div>
               
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box className='header' sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -164,9 +150,9 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+        
+      
+    </div>
   );
 }
 export default ResponsiveAppBar;
