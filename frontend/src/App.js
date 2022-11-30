@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import ResponsiveAppBar from './components/header';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import Body from './components/body';
+import Question from './components/question';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
 
       <BottomNavigation/>
       <Body />
+      <Question/>
 
     </div>
   )
