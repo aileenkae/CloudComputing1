@@ -1,11 +1,16 @@
 import React from 'react'
+import Typography from '@mui/material/Typography';
 
 function Footer() {
   return (
-    <div>
-      <footer className='footer'>
-        <h1>Test Footer</h1>
-      </footer>
+    <div style={{position:'sticky', display:'flex', alignItems: 'center', padding: 5, alignItems: 'center', backgroundColor:'#AADAB8'}}>
+      
+       
+      <Typography variant="h4"  style={{ fontWeight: 700, letterSpacing: '.1rem',  color: '#AADAB8',  textDecoration: 'none' }}>
+          _
+      </Typography>
+      
+      
     </div>
   )
 }
