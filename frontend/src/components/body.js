@@ -15,7 +15,7 @@ function ResponsiveAppBarBODY() {
 {/*function Body() { */}
   return (
     <div style={{backgroundColor: '#f4f4f9' , paddingBottom: '200px', paddingTop: '150px' }} > 
-      <Typography style={{fontSize:50, fontWeight:700, color:'#aadab8', alignContent:'center', marginLeft:700, marginBottom:70 }}> Your Forms </Typography>  
+      <Typography style={{fontSize:50, fontWeight:700, color:'#aadab8', alignContent:'center', marginLeft:600, marginBottom:70 }}> Your Forms </Typography>  
       
       <div style={{ marginLeft:200,  marginRight: 200, display:'flex' , flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }} > 
 
