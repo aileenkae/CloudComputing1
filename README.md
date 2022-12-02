@@ -31,4 +31,5 @@
     - git commit -m 'text'    --> Commit with message text for change 
    
     - git push                --> Load Branch in GitHub
+    - git reset --hard        --> Any changes to tracked files in the working tree since <commit> are discarded
      
