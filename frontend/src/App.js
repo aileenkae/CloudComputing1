@@ -1,6 +1,6 @@
 import './App.css';
-import React, {useEffect, useState} from 'react';
-import Question from './components/question';
+import React /*, {useEffect, useState}*/ from 'react';
+
 import {Route, Routes, BrowserRouter} from 'react-router-dom';
 import {Home} from './components/Home_Site';
 
