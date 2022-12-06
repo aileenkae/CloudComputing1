@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 export function Form() {
   return (
     <div>
-        <div style={{position:'sticky', padding: 5,  display:'flex', alignItems: 'center', backgroundColor:'#AADAB8', maxWidth:'xl'}} >
+        <div style={{position:'sticky', padding: 8,  display:'flex', alignItems: 'center', backgroundColor:'#AADAB8', maxWidth:'xl'}} >
             <Link to='/home'><AdbIcon style={{ display:'flex', marginLeft: 10 , fontSize: "3rem", color:'#f4f4f9' }} /></Link>
             <input type='text' className='form_name' 
                         style={{
