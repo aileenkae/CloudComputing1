@@ -3,6 +3,7 @@ import Delete from '@mui/icons-material/DeleteForeverOutlined';
 import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import {Link} from 'react-router-dom';
 
 function ResponsiveAppBarBODY() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -12,6 +13,10 @@ function ResponsiveAppBarBODY() {
     setAnchorElNav(event.currentTarget);
   };
 
+
+     
+  
+
 {/*function Body() { */}
 
   return (
@@ -19,11 +24,12 @@ function ResponsiveAppBarBODY() {
       <Typography style={{fontSize:50, fontWeight:700, color:'#aadab8', alignContent:'center', marginLeft:600, marginBottom:60 }}> Your Forms </Typography>  
       
       <div style={{ marginLeft:200,  marginRight: 200, display:'flex' , flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }} > 
-
+        <Link to='/form'>
         <button style={{height: '250px', width: '300px', cursor:'pointer'}}> 
         <p style={{fontSize: 20}}>Create New Form</p>
         <AddIcon style={{fontSize:200, color:'#aadab8' }}> </AddIcon>
         </button>
+        </Link>
         
         <button style={{height: '250px', width: '300px', cursor:'pointer'}}>   
         <p style={{fontSize: 20}}>Form #1</p>
