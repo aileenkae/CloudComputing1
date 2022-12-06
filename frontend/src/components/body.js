@@ -13,6 +13,7 @@ function ResponsiveAppBarBODY() {
   };
 
 {/*function Body() { */}
+
   return (
     <div style={{backgroundColor: '#f4f4f9' , paddingBottom: '100px', paddingTop: '100px' }} > 
       <Typography style={{fontSize:50, fontWeight:700, color:'#aadab8', alignContent:'center', marginLeft:600, marginBottom:60 }}> Your Forms </Typography>  
@@ -27,7 +28,7 @@ function ResponsiveAppBarBODY() {
         <button style={{height: '250px', width: '300px', cursor:'pointer'}}>   
         <p style={{fontSize: 20}}>Form #1</p>
         <IconButton onClick={handleOpenNavMenu}  size="large" aria-label="account of current user"  aria-controls="menu-appbar" aria-haspopup="true" color="inherit" style={{marginTop:100, marginLeft:200}} >  
-        <Delete style={{fontSize: 30, borderRadius: '2px'}} /> </IconButton>
+        <Delete title="Delete Form" style={{fontSize: 30, borderRadius: '2px'}} /> </IconButton>
         </button>
 
         <button style={{height: '250px', width: '300px', cursor:'pointer'}}> 

@@ -38,22 +38,21 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <div style={{position:'sticky', padding: 5,  display:'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor:'#AADAB8', maxWidth:'xl'}} >
+    <div style={{position:'sticky', padding: 5,  display:'flex', backgroundColor:'#AADAB8', maxWidth:'xl'}} >
       <AdbIcon style={{ display:'flex', marginLeft: 10 , fontSize: "3rem", color:'#f4f4f9' }} />
-          Logo
       <Typography variant="h4"  component="a"   href="/"
           style={{ fontWeight: 700, letterSpacing: '.2rem',  color: '#f4f4f9',  textDecoration: 'none' }}   >
           Forms
       </Typography>
 
           
-      <div style={{position:'sticky', display:'flex', flexDirection:'row', width: 400, height: 45, alignItems:'center', backgroundColor: '#f4f4f9', borderRadius:5}}> 
+      <div style={{position:'sticky', display:'flex', flexDirection:'row', width: 400, height: 45, alignItems:'center', backgroundColor: '#f4f4f9', borderRadius:5, marginLeft: 400 }}> 
         <IconButton ><SearchIcon /></IconButton>
         <input type="text" name="search" placeholder='Search' style={{border:'none', height:40, background:'transparent', outline:'none', widh:'100%'}} />
       </div>
           
   
-      <IconButton onClick={handleOpenNavMenu}  size="large" aria-label="account of current user"  aria-controls="menu-appbar" aria-haspopup="true" color="inherit" > 
+   {/*   <IconButton onClick={handleOpenNavMenu}  size="large" aria-label="account of current user"  aria-controls="menu-appbar" aria-haspopup="true" color="inherit" > 
        <MenuIcon />  </IconButton>
 
        <Menu id="menu-appbar"  anchorEl={anchorElNav} anchorOrigin={{vertical: 'bottom',horizontal: 'left',}}
@@ -66,10 +65,10 @@ function ResponsiveAppBar() {
             <MenuItem key={page} onClick={handleCloseNavMenu}>
               <Typography textAlign="center">{page}</Typography>
             </MenuItem>
-          )) */}
-        </Menu>
+          )) 
+        </Menu> 
         
-      {/*  {<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+       {<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             pages.map((page) => (
               <Button
                 key={page}
@@ -79,9 +78,11 @@ function ResponsiveAppBar() {
                 {page}
               </Button>
             ))
-          </Box> } */}
+          </Box> }
+           */}
 
-         <Box sx={{ flexGrow: 0 }}>
+
+         <Box sx={{ flexGrow: 0, marginLeft: 60, cursor:'pointer' }}>
          <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
