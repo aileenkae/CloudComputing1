@@ -28,9 +28,10 @@ function Question() {
     }*/
   return (
     <div>
+
         <div className="question_box" 
         style={{
-            backgroundColor:'#F4F4F9',
+            backgroundColor:'#EAFBED',
             height:'100%',
             paddingBottom:'30px'}}>
             <br/>
@@ -43,8 +44,8 @@ function Question() {
                     <div className='question_top' 
                     style={{
                         backgroundColor:'white',
-                        borderTopStyle: 'solid',
-                        borderTopColor: 'green',
+                        
+                        
                         borderTopWidth: '8px',
                         borderRadius: '8px',
                         paddingTop: '30px',
@@ -79,6 +80,9 @@ function Question() {
                             height: '35px'
                         }}  
                         placeholder='Beschreibung'></input>
+
+
+
                     </div>
                 </div>
 
