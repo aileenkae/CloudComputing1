@@ -3,6 +3,7 @@ import Delete from '@mui/icons-material/DeleteForeverOutlined';
 import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import Authenticate from "./authenticate"
 
 function ResponsiveAppBarBODY() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -23,6 +24,7 @@ function ResponsiveAppBarBODY() {
         <p style={{fontSize: 20}}>Create New Form</p>
         <AddIcon style={{fontSize:150, color:'#aadab8' }}> </AddIcon>
         </button>
+        <Authenticate />
         
         <button style={{height: '250px', width: '300px', cursor:'pointer'}}>   
         <p style={{fontSize: 20}}>Form #1</p>
