@@ -8,12 +8,24 @@ export function Form() {
   return (
     <div>
         <div style={{position:'sticky', padding: 5,  display:'flex', alignItems: 'center', backgroundColor:'#AADAB8', maxWidth:'xl'}} >
-            <Link to='/home'><AdbIcon style={{ display:'flex', marginLeft: 10 , fontSize: "3rem", color:'#f4f4f9' }} />
-            <Typography variant="h4"  component="a"   href="/"
-            style={{ fontWeight: 700, letterSpacing: '.2rem',  color: '#f4f4f9',  textDecoration: 'none' }}   >
-            Form
-            </Typography>
-            </Link>
+            <Link to='/home'><AdbIcon style={{ display:'flex', marginLeft: 10 , fontSize: "3rem", color:'#f4f4f9' }} /></Link>
+            <input type='text' className='form_name' 
+                        style={{
+                            color:'#f4f4f9',
+                            boxSizing:'border-box',
+                            marginLeft: '10px',
+                            fontSize:'32px',
+                            fontWeight:'400',
+                            lineHeight:'40px',
+                            lineHeigth:'135%',
+                            width:'30%',
+                            border:'none',
+                            outline:'none',
+                            height: '35px',
+                            backgroundColor: '#AADAB8',
+                        }} 
+                        placeholder="Formular Name" defaultValue={'Unbekanntes Formular'}></input>
+            
         </div>
     <Question/>
     </div>
