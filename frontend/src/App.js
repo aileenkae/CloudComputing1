@@ -23,7 +23,7 @@ function App() {
 
 
   return (
-    
+  
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<Home/>}/> 
