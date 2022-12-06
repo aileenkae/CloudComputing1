@@ -11,11 +11,22 @@
     1) strg + c 
     
 ## Frontend
-    Verbindung starten: 
+
+    Erste Verbindung starten: 
     1) cd frontend
     2) npm install 
     3) npm start
+
+    Verbindung starten: 
+    1) cd frontend
+    3) npm start
     
+    Pakete/Module die installiert sein müssen: 
+    1) npm (npm install)
+        Bei Errors in Bezug auf node_modules: Den Frontend
+        node_modules Ordner löschen und neu installieren
+    2) npm install react-router-dom@6.1.1
+
     Verbindung beenden: 
     1) strg + c
     
@@ -32,4 +43,6 @@
    
     - git push                --> Load Branch in GitHub
     - git reset --hard        --> Any changes to tracked files in the working tree since <commit> are discarded
+
+
      
