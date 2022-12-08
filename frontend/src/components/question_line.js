@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Question_line() {
+export function Question_line() {
 
 
   return (
