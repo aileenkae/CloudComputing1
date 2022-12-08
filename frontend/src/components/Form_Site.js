@@ -24,7 +24,7 @@ export function Form() {
                             height: '35px',
                             backgroundColor: '#AADAB8',
                         }} 
-                        placeholder="Formular Name" defaultValue={'Unbekanntes Formular'}></input>
+                        placeholder="Formular Name" defaultValue={'Formular Name'}></input>
             
         </div>
     <Question/>

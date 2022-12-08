@@ -1,5 +1,7 @@
-import { Accordion, AccordionSummary } from '@mui/material'
-import React, { useState,useEffect } from 'react'
+import { Accordion, AccordionSummary } from '@mui/material';
+import React, { useState,useEffect } from 'react';
+import Question_line from './question_line';
+import Question_textbox from './question_textbox';
 
 
 function Question() {
@@ -31,7 +33,7 @@ function Question() {
 
         <div className="question_box" 
         style={{
-            backgroundColor:'#EAFBED',
+            backgroundColor:'#f4f4f9',
             height:'100%',
             paddingBottom:'30px'}}>
             <br/>
@@ -65,7 +67,7 @@ function Question() {
                             outline:'none',
                             height: '35px'
                         }} 
-                        placeholder="Titel"></input>
+                        placeholder="Formular Name"></input>
                         <input type='text' className='question_desc'
                         style={{
                             color:'black',
@@ -81,13 +83,15 @@ function Question() {
                         }}  
                         placeholder='Beschreibung'></input>
 
-
+                        
 
                     </div>
                 </div>
 
                 {/*questionsUI()*/}
             </div>
+            <Question_line/>
+            <Question_textbox/>
         </div>
     </div>
   )
