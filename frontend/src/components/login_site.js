@@ -1,4 +1,5 @@
 import React from 'react'
+import './login_site.css';
 import AdbIcon from '@mui/icons-material/Description';
 import Typography from '@mui/material/Typography';
 import Authenticate from './authenticate';
@@ -14,9 +15,8 @@ export function Login() {
           Forms   Login
       </Typography>
 
-
     </div>
-      <div style={{position: 'absolut', marginLeft: '45%', marginTop: '100px'}}>
+      <div class="Login">
         <Authenticate />
       </div>
     </div>
