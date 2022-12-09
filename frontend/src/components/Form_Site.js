@@ -1,5 +1,8 @@
 import React from 'react';
 import Question from './question';
+import Question_Radio from './questions_radio'
+import MultipleChoice from './questions_multiple';
+import RadioV2 from './radio';
 import AdbIcon from '@mui/icons-material/Description';
 import Typography from '@mui/material/Typography';
 import {Link} from 'react-router-dom';
@@ -27,7 +30,13 @@ export function Form() {
                         placeholder="Formular Name" defaultValue={'Unbekanntes Formular'}></input>
             
         </div>
-    <Question/>
+
+            <Question/>
+            <MultipleChoice/>
+            <MultipleChoice/>
+            <Question_Radio/>
+            <RadioV2/>
+    
     </div>
   );
 }
