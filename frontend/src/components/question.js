@@ -6,20 +6,11 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
-
+import Question_ra from './quest-r';
 
 
 function Question() {
-    const[questions, setQuestions] = useState(
-        [{questionText: 'Testfrage?',
-        questionType:'radio',
-        options : [
-            {optionText: "Test1"},
-            {optionText: 'Test2'}
-        ],
-        open: true,
-        required: false}]
-    );
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -36,6 +27,10 @@ function Question() {
 
     const addMultileline = event => {
         setInputList(inputList.concat(<Question_textbox key={inputList.length} />));
+      };
+
+    const addRadio = event => {
+        setInputList(inputList.concat(<Question_ra key={inputList.length} />));
       };
     
 
@@ -107,9 +102,10 @@ function Question() {
 
                     </div>
                 </div>
-
+                 
                 {/*questionsUI()*/}
             </div>
+                    
             {inputList}
             <Button
                 id="fade-button"
@@ -130,7 +126,7 @@ function Question() {
                 TransitionComponent={Fade}>
                 <MenuItem onClick={addMultileline}>Multiline</MenuItem>
                 <MenuItem onClick={addSingleline}>Singleline</MenuItem>
-                <MenuItem onClick={handleClose}>Radiobutton</MenuItem>
+                <MenuItem onClick={addRadio}>Radiobutton</MenuItem>
             </Menu>
             <Button onClick={handleClick}>Löschen</Button>
         </div>

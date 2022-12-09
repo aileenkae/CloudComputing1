@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import FadeMenu from './add_question';
 
 
+
 export function Form() {
   return (
     <div>
@@ -36,6 +37,7 @@ export function Form() {
             height:'100%',
             paddingBottom:'30px'}}>
     <Question/>
+ 
   
           </div>
     </div>
