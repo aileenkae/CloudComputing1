@@ -26,7 +26,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(require("./routes/record"));
+// app.use(require("./routes/record"));
 
 
 app.listen(port, () => {
@@ -43,10 +43,6 @@ mongoose.connect(process.env.ATLAS_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
-
-// console.log(mongoose)
-
-// mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema(
     {username: String, name: String, googleId: String, secret: String}
@@ -94,10 +90,10 @@ app.get(
 
 app.get(
     "/auth/google/callback",
-    passport.authenticate("google", {failureRedirect: "http://localhost:3000"}),
+    passport.authenticate("google", {failureRedirect: "http://localhost:3000/home"}),
     function (req, res) {
         // Successful authentication, redirect secrets.
-        res.redirect("http://localhost:3000");
+        res.redirect("http://localhost:3000/home");
     }
 );
 
