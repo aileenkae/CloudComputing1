@@ -53,6 +53,25 @@ function Question() {
     });
   };
 
+  const [formNameValue, setInputValue] = useState('');
+  // handle the onChange event
+  const changeName = (event) => {
+    // update the inputValue state variable with the new value
+    setInputValue(event.target.value);
+  };
+
+  const [formBeschreibungValue, setBeschreibungValue] = useState('');
+  const changeBeschreibung = (event) => {
+    // update the inputValue state variable with the new value
+    setBeschreibungValue(event.target.value);
+  };
+
+  const form_json_inhalt = {
+    form_name: formNameValue,
+    form_beschreibung: formBeschreibungValue
+  };
+  console.log(form_json_inhalt)
+
   /*function questionsUI() {
         return questions.map((ques,i) => (
             <Accordion expanded={ques.open} className={ques[i].open ? 'add border' : ''}>
@@ -104,6 +123,7 @@ function Question() {
                 height: "35px",
               }}
               placeholder="Formular Name"
+              onChange={changeName}
             ></input>
             <input
               type="text"
@@ -121,6 +141,7 @@ function Question() {
                 height: "35px",
               }}
               placeholder="Beschreibung"
+              onChange={changeBeschreibung}
             ></input>
           </div>
         </div>
