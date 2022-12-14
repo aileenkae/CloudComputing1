@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useId} from 'react'
 import Delete from '@mui/icons-material/DeleteForeverOutlined';
 import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import uuid from 'react-uuid'
 
 function ResponsiveAppBarBODY() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -12,6 +13,12 @@ function ResponsiveAppBarBODY() {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+  const navigate = useNavigate();
+  const CreateNewForm = () => {
+   
+    const id_form = uuid();
+    navigate('/form/' + id_form);
+  }
 
 
      
@@ -24,12 +31,12 @@ function ResponsiveAppBarBODY() {
       <Typography style={{fontSize:50, fontWeight:700, color:'#aadab8', alignContent:'center', marginLeft:600, marginBottom:60 }}> Your Forms </Typography>  
       
       <div style={{ marginLeft:200,  marginRight: 200, display:'flex' , flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }} > 
-        <Link to='/form'>
-        <button style={{height: '250px', width: '300px', cursor:'pointer'}}> 
+        
+        <button onClick={CreateNewForm} style={{height: '250px', width: '300px', cursor:'pointer'}}> 
         <p style={{fontSize: 20}}>Create New Form</p>
         <AddIcon style={{fontSize:200, color:'#aadab8' }}> </AddIcon>
         </button>
-        </Link>
+        
         
         <button style={{height: '250px', width: '300px', cursor:'pointer'}}>   
         <p style={{fontSize: 20}}>Form #1</p>
