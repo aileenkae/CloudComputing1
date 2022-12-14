@@ -116,15 +116,17 @@ function Question_ra() {
                         ></input>
                       }
                     />
-                    <button
+                    <Button style={{
+                                 marginLeft: "5px",
+                            }}
                       onClick={() =>
                         setInputList(
                           radioList.filter((q) => q.id !== question.id)
                         )
                       }
                     >
-                      DEL
-                    </button>
+                      Löschen
+                    </Button>
                   </div>
                 );
               })}

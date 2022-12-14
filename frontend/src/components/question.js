@@ -8,6 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
 import Question_ra from "./quest-r";
 
+
 function Question() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -133,12 +134,14 @@ function Question() {
             return (
               <>
                 <Question_textbox key={inputList.length} />
-                <Button
+                <Button style={{
+                                 marginLeft: "75%",
+                            }}
                   onClick={() =>
                     setInputList(inputList.filter((q) => q.id !== question.id))
                   }
                 >
-                  del
+                  Löschen
                 </Button>
               </>
             );
@@ -146,12 +149,14 @@ function Question() {
             return (
               <>
                 <Question_line key={inputList.length} />
-                <Button
+                <Button style={{
+                                 marginLeft: "75%",
+                            }}
                   onClick={() =>
                     setInputList(inputList.filter((q) => q.id !== question.id))
                   }
                 >
-                  del
+                  Löschen
                 </Button>
               </>
             );
@@ -159,18 +164,24 @@ function Question() {
             return (
               <>
                 <Question_ra key={inputList.length} />
-                <Button
+                <Button style={{
+                                 marginLeft: "75%",
+                            }}
                   onClick={() =>
                     setInputList(inputList.filter((q) => q.id !== question.id))
                   }
                 >
-                  del
+                  Löschen
                 </Button>
               </>
             );
           }
         })}
       <Button
+         style={{
+            marginLeft: "auto",
+            marginRight: "auto"
+        }}
         id="fade-button"
         aria-controls={open ? "fade-menu" : undefined}
         aria-haspopup="true"
@@ -193,8 +204,6 @@ function Question() {
         <MenuItem onClick={addSingleline}>Singleline</MenuItem>
         <MenuItem onClick={addRadio}>Radiobutton</MenuItem>
       </Menu>
-      {/*  Kann gelöscht werden */}
-      <Button onClick={handleClick}>Löschen</Button>
     </div>
   );
 }
