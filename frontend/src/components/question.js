@@ -7,6 +7,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
 import Question_ra from "./quest-r";
+import uuid from 'react-uuid'
 
 
 function Question() {
@@ -52,6 +53,25 @@ function Question() {
       return [...prevState, { id: id + 1, type: "radio" }];
     });
   };
+
+  const [formNameValue, setInputValue] = useState('');
+  // handle the onChange event
+  const changeName = (event) => {
+    // update the inputValue state variable with the new value
+    setInputValue(event.target.value);
+  };
+
+  const [formBeschreibungValue, setBeschreibungValue] = useState('');
+  const changeBeschreibung = (event) => {
+    // update the inputValue state variable with the new value
+    setBeschreibungValue(event.target.value);
+  };
+
+  const form_json_inhalt = {
+    form_name: formNameValue,
+    form_beschreibung: formBeschreibungValue
+  };
+  console.log(form_json_inhalt)
 
   /*function questionsUI() {
         return questions.map((ques,i) => (
@@ -104,6 +124,7 @@ function Question() {
                 height: "35px",
               }}
               placeholder="Formular Name"
+              onChange={changeName}
             ></input>
             <input
               type="text"
@@ -121,6 +142,7 @@ function Question() {
                 height: "35px",
               }}
               placeholder="Beschreibung"
+              onChange={changeBeschreibung}
             ></input>
           </div>
         </div>

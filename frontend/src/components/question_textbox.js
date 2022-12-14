@@ -1,7 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 function Question_textbox() {
 
+    const [formFrageValue, setFrageValue] = useState('');
+    const changeFrage = (event) => {
+      // update the inputValue state variable with the new value
+      setFrageValue(event.target.value);
+    };
+  
+    const form_json_frage= {
+      form_frage: formFrageValue,
+
+    };
+    console.log(form_json_frage)
 
   return (
 
@@ -32,7 +43,7 @@ function Question_textbox() {
                         outline:'none',
                         height: '35px'
                         }} 
-                    placeholder='Frage'></input>
+                    placeholder='Frage' onChange={changeFrage}></input>
                     <input type='text' className='question_desc'
                         style={{
                         color:'black',

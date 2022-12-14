@@ -1,14 +1,37 @@
-import React from "react";
+import React, { useId, useState }from "react";
 import Question from "./question";
 import Question_Radio from "./questions_radio";
 import MultipleChoice from "./questions_multiple";
 import RadioV2 from "./radio";
 import AdbIcon from "@mui/icons-material/Description";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 import FadeMenu from "./add_question";
 
+
+
 export function Form() {
+
+
+    const params = useParams();
+
+
+
+    
+    const form_json = { 
+      id_form: params.id,
+
+    };
+ 
+
+    const json_form = JSON.stringify(form_json);
+  
+    console.log(json_form);
+    
+
+    
+
+
   return (
     <div>
       <div
@@ -33,6 +56,7 @@ export function Form() {
         </Link>
 
         <input
+          
           type="text"
           className="form_name"
           style={{
@@ -51,7 +75,9 @@ export function Form() {
           }}
           placeholder="Formular Name"
           defaultValue={"Formular Name"}
+          
         ></input>
+        
       </div>
       <div
         className="question_box"
@@ -68,3 +94,6 @@ export function Form() {
 }
 
 export default Form;
+
+
+
