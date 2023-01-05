@@ -14,3 +14,29 @@ userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
 module.exports = userSchema;
+
+
+
+
+
+// const userSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         default: null
+//     },
+//     email: {
+//         type: String,
+//         required: true
+//     },
+//     googleId: {
+//         type: String,
+//         default: null
+//     },
+//     secret: {
+//         type: String,
+//         default: null
+//     },
+//     password: {
+//         type: String
+//     },
+// });
