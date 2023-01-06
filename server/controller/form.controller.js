@@ -1,11 +1,8 @@
-// const jwt = require('jsonwebtoken');
-//to extract the payload of a JWT, which typically contains information about the authenticated user
-// const jwtDecode = require('jwt-decode');
-// const passport = require("passport");
-
 const express = require("express");
 const ensureLogIn = require('connect-ensure-login').ensureLoggedIn;
-const Form = require('../database/models/form.model')
+const Form = require('../database/models/form.model');
+const Question = require('../database/models/question.model');
+const AnswerVariants = require('../database/models/answer_variants.model');
 const mongoose = require('mongoose');
 
 const ObjectId = mongoose.Types.ObjectId;
@@ -43,16 +40,36 @@ formController.post('/', ensureLoggedIn, async (req, res) => {
         let data = {
             _id: new mongoose.Types.ObjectId(),
             createdBy: req.user._id,
-            name: req.query.name,
-            description: req.query.description
+            name: req.body.name,
+            description: req.body.description
         }
         
         await Form.create(data).then((docs) => {
+            req.body.questions.forEach(async question => {
+                await Question.create({
+                    _id: new mongoose.Types.ObjectId(),
+                    fieldType: question.type,
+                    question: question.question,
+                    formId: docs._id
+                }).then(questionDocs => {
+                    if (question.type === 'multiselect') {
+                        question.answers.forEach(async answer => {    
+                            await AnswerVariants.create({
+                                _id: new mongoose.Types.ObjectId(),
+                                answer: answer.answer,
+                                questionId: questionDocs._id
+                            }).then(answerDocs => {
+                                console.log('answer created')
+                            })
+                        })
+                    }
+                })
+            });
             res.send(docs)
         })
-
     } catch (error) {
-        res.send(error)
+        console.log(error)
+        res.status(400).send(error)
     }
 })
 

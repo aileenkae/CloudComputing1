@@ -6,7 +6,23 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
 
-function Question_ra() {
+function Question_ra(props) {
+  
+  let {
+    handleSubmit,
+    setForm_name,
+    setForm_des,
+    setQuestion_multi_q,
+    setQuestion_multi_des,
+    setQuestion_single_q,
+    setQuestion_single_des,
+    setQuestion_radio_q,
+    setQuestion_radio_des,
+    setQuestion_radio_click,
+  } = props.radioState;
+  
+  
+  
   const [anchorEl, setAnchorEl] = React.useState(null); //useState um die Variable zu ändern
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -24,7 +40,10 @@ function Question_ra() {
     );
   };
 
-  
+  const deleteRadio = (id) => {
+    setInputList(radioList.filter((radio) => radio.id !== id));
+  };
+
   const [value, setValue] = React.useState("male");
 
   const handleChange = (event) => {
@@ -54,6 +73,7 @@ function Question_ra() {
         <input
           type="text"
           className="question_name"
+          onChange={e => setQuestion_radio_q(e.target.value)}
           style={{
             color: "black",
             boxSizing: "border-box",
@@ -71,6 +91,7 @@ function Question_ra() {
         <input
           type="text"
           className="question_desc"
+          onChange={e => setQuestion_radio_des(e.target.value)}
           style={{
             color: "black",
             boxSizing: "border-box",
@@ -107,6 +128,7 @@ function Question_ra() {
                       label={
                         <input
                           type="text"
+                          /*onChange={e => setQuestion_radio_click(e.target.value)} Lösen*/
                           style={{
                             border: "none",
                             outline: "none",
@@ -116,9 +138,10 @@ function Question_ra() {
                         ></input>
                       }
                     />
-                    <Button style={{
-                                 marginLeft: "5px",
-                            }}
+                    <Button
+                      style={{
+                        marginLeft: "5px",
+                      }}
                       onClick={() =>
                         setInputList(
                           radioList.filter((q) => q.id !== question.id)

@@ -36,3 +36,4 @@ app.listen(port, () => {
 
 app.use('/', controllers.userController);
 app.use('/forms', controllers.formController);
+app.use('/response', controllers.responseController)
