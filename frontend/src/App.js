@@ -1,37 +1,22 @@
 import './App.css';
-import React /*, {useEffect, useState}*/ from 'react';
+import React from 'react';
 
 import {Route, Routes, BrowserRouter} from 'react-router-dom';
-import {Home} from './components/Home_Site';
-import {Login} from './components/login_site';
-import {Form} from './components/Form_Site';
-
+import pages from './pages';
+import layouts from './layouts';
 
 function App() {
-
- /* const [backendData, setBackendData] = useState([{}])
-
-  useEffect(() => {
-    fetch("/123").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-  }, []) */
-
-
-  return (
-  
-    <BrowserRouter>
-      <Routes>
-        <Route path="/home" element={<Home/>}/> 
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/form/:id" element={<Form/>}/>
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<layouts.Default />}>
+                    <Route index element={<pages.Home />}/>
+                    <Route path="/login" element={<pages.Login/>}/>
+                    <Route path="/form" element={<pages.Form/>}/>
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App

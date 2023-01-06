@@ -7,10 +7,40 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
 import Question_ra from "./quest-r";
-import uuid from 'react-uuid'
 
+function Question(props) {
+  let {
+    handleSubmit,
+    setForm_name,
+    setForm_des,
+    setQuestion_multi_q,
+    setQuestion_multi_des,
+    setQuestion_single_q,
+    setQuestion_single_des,
+    setQuestion_radio_q,
+    setQuestion_radio_des,
+    setQuestion_radio_click,
+  } = props.formState;
 
-function Question() {
+  //Object TextData für Textbox, um auf die Klasse question_textbox zuzugreifen
+  let TextData = {
+    setQuestion_multi_q,
+    setQuestion_multi_des,
+  };
+
+  //Object SingleData für QuestionLine, um auf die Klasse question_line zuzugreifen
+  let singleData = {
+    setQuestion_single_q,
+    setQuestion_single_des,
+  };
+
+  //Object SingleData für QuestionLine, um auf die Klasse question_line zuzugreifen
+  let radioData = {
+    setQuestion_radio_q,
+    setQuestion_radio_des,
+    setQuestion_radio_click,
+  };
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -22,212 +52,52 @@ function Question() {
     setAnchorEl(null);
   };
 
-  const [inputList, setInputList] = useState([]);
-
-  const addSingleline = (event) => {
-    setInputList((prevState) => {
-      const id = prevState.length > 0 ? prevState[prevState.length - 1].id : 0;
-      console.log([...prevState, { id: id + 1, type: "singleline" }]);
-
-      return [...prevState, { id: id + 1, type: "singleline" }];
-    });
-  };
-
-  const addMultileline = (event) => {
-    setInputList((prevState) => {
-      const id = prevState.length > 0 ? prevState[prevState.length - 1].id : 0;
-
-      console.log([...prevState, { id: id + 1, type: "multiline" }]);
-
-      return [...prevState, { id: id + 1, type: "multiline" }];
-    });
-  };
-
-  const addRadio = (event) => {
-    setInputList((prevState) => {
-      const id = prevState.length > 0 ? prevState[prevState.length - 1].id : 0;
-
-      //Kann man löschen
-      console.log([...prevState, { id: id + 1, type: "radio" }]);
-
-      return [...prevState, { id: id + 1, type: "radio" }];
-    });
-  };
-
-  const [formNameValue, setInputValue] = useState('');
-  // handle the onChange event
-  const changeName = (event) => {
-    // update the inputValue state variable with the new value
-    setInputValue(event.target.value);
-  };
-
-  const [formBeschreibungValue, setBeschreibungValue] = useState('');
-  const changeBeschreibung = (event) => {
-    // update the inputValue state variable with the new value
-    setBeschreibungValue(event.target.value);
-  };
-
-  const form_json_inhalt = {
-    form_name: formNameValue,
-    form_beschreibung: formBeschreibungValue
-  };
-  console.log(form_json_inhalt)
-
-  /*function questionsUI() {
-        return questions.map((ques,i) => (
-            <Accordion expanded={ques.open} className={ques[i].open ? 'add border' : ''}>
-                <AccordionSummary 
-                    aria-controls='panel1a-content'
-                    id="panel1a-header"
-                    elevation={1} style={{width:'100%'}}>
-
-                </AccordionSummary>
-            </Accordion>
-        ))
-    }*/
-  return (
-    <div>
-      <br />
-      <div
-        className="question_part"
-        style={{
-          margin: "auto",
-          width: "50%",
-        }}
-      >
-        <div className="question_title">
-          <div
-            className="question_top"
-            style={{
-              backgroundColor: "white",
-
-              borderTopWidth: "8px",
-              borderRadius: "8px",
-              paddingTop: "30px",
-              paddingLeft: "25px",
-              paddingBottom: "30px",
-            }}
-          >
-            <input
-              type="text"
-              className="question_name"
-              style={{
-                color: "black",
-                boxSizing: "border-box",
-                fontSize: "32px",
-                fontWeight: "400",
-                lineHeight: "40px",
-                lineHeigth: "135%",
-                width: "100%",
-                border: "none",
-                outline: "none",
-                height: "35px",
-              }}
-              placeholder="Formular Name"
-              onChange={changeName}
-            ></input>
-            <input
-              type="text"
-              className="question_desc"
-              style={{
-                color: "black",
-                boxSizing: "border-box",
-                fontSize: "13px",
-                fontWeight: "400",
-                lineHeight: "40px",
-                marginTop: "10px",
-                width: "100%",
-                border: "none",
-                outline: "none",
-                height: "35px",
-              }}
-              placeholder="Beschreibung"
-              onChange={changeBeschreibung}
-            ></input>
-          </div>
-        </div>
-
-        {/*questionsUI()*/}
-      </div>
-
-      {inputList.length > 0 &&
-        inputList.map((question) => {
-          if (question.type === "multiline") {
-            return (
-              <>
-                <Question_textbox key={inputList.length} />
-                <Button style={{
-                                 marginLeft: "75%",
-                            }}
-                  onClick={() =>
-                    setInputList(inputList.filter((q) => q.id !== question.id))
-                  }
+  if(props.question.type === "multiline") {
+    return (
+      <>
+                <Question_textbox
+                textState={TextData}
+                />
+                <Button
+                  style={{
+                    marginLeft: "75%",
+                  }}
+        onClick={() => {props.deleteQuestion(props.question)}}
                 >
                   Löschen
                 </Button>
               </>
-            );
-          } else if (question.type === "singleline") {
-            return (
-              <>
-                <Question_line key={inputList.length} />
-                <Button style={{
-                                 marginLeft: "75%",
-                            }}
-                  onClick={() =>
-                    setInputList(inputList.filter((q) => q.id !== question.id))
-                  }
+    )
+  }else if(props.question.type === "singleline") {
+    return (
+<>
+                <Question_line lineState={singleData} />
+                <Button
+                  style={{
+                    marginLeft: "75%",
+                  }}
+        onClick={() => {props.deleteQuestion(props.question)}}
+
                 >
                   Löschen
                 </Button>
               </>
-            );
-          } else {
-            return (
-              <>
-                <Question_ra key={inputList.length} />
-                <Button style={{
-                                 marginLeft: "75%",
-                            }}
-                  onClick={() =>
-                    setInputList(inputList.filter((q) => q.id !== question.id))
-                  }
-                >
-                  Löschen
-                </Button>
-              </>
-            );
-          }
-        })}
+    )
+  }else {
+    return (
+      <>
+      <Question_ra radioState={radioData} />
       <Button
-         style={{
-            marginLeft: "auto",
-            marginRight: "auto"
+        style={{
+          marginLeft: "75%",
         }}
-        id="fade-button"
-        aria-controls={open ? "fade-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
+        onClick={() => {props.deleteQuestion(props.question)}}
       >
-        Frage hizufügen
+        Löschen
       </Button>
-      <Menu
-        id="fade-menu"
-        MenuListProps={{
-          "aria-labelledby": "fade-button",
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        TransitionComponent={Fade}
-      >
-        <MenuItem onClick={addMultileline}>Multiline</MenuItem>
-        <MenuItem onClick={addSingleline}>Singleline</MenuItem>
-        <MenuItem onClick={addRadio}>Radiobutton</MenuItem>
-      </Menu>
-    </div>
-  );
+    </>
+    )
+  }
 }
 
 export default Question;

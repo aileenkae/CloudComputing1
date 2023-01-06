@@ -3,8 +3,10 @@ const passport = require("passport");
 const User = require('../database/models/user.model')
 
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const ensureLogIn = require('connect-ensure-login').ensureLoggedIn;
 
 const userController = express.Router();
+let ensureLoggedIn = ensureLogIn();
 
 require("dotenv").config({path: "./config.env"});
 
@@ -30,7 +32,7 @@ passport.use(new GoogleStrategy({
 
     User.findOrCreate({
         googleId: profile.id,
-        username: profile.id
+        username: profile.name.givenName
     }, function (err, user) {
         return cb(err, user);
     });
@@ -50,7 +52,12 @@ userController.get(
     }
 );
 
+userController.get('/me', ensureLoggedIn, function(req, res) {
+    return res.status(200).send(req.user);
+})
+
 userController.get("/logout", function (req, res) {
+    req.logout()
     res.redirect("http://localhost:3000/");
 });
 

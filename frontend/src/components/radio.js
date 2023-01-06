@@ -7,8 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 
-
-/*const BpIcon = styled('span')(({ theme }) => ({
+const BpIcon = styled('span')(({ theme }) => ({
     borderRadius: '50%',
     width: 16,
     height: 16,
@@ -95,13 +94,13 @@ function RadioV2() {
                                     aria-labelledby="demo-customized-radios"
                                     name="customized-radios"
                                 >
-                                    <FormControlLabel value="option1" control={<BpRadio />} label="Option1"/>
-                                    <FormControlLabel value="option2" control={<BpRadio />} label="Option2"/>
-                                    <FormControlLabel value="option3" control={<BpRadio />} label="Option3"/>
+                                    <FormControlLabel value="option1" /*control={<BpRadio />}*/ label="Option1"/>
+                                    <FormControlLabel value="option2" /*control={<BpRadio />}*/ label="Option2"/>
+                                    <FormControlLabel value="option3" /*control={<BpRadio />}*/ label="Option3"/>
                                     <FormControlLabel
                                     value="disabled"
                                     disabled
-                                    control={<BpRadio />}
+                                    /*control={<BpRadio />} kann auch gelöscht werden*/
                                     label="(Disabled option)"
                                     />
                                 </RadioGroup>
@@ -114,4 +113,4 @@ function RadioV2() {
   )
 }
 
-export default RadioV2*/
+export default RadioV2
