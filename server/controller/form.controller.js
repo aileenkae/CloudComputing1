@@ -4,15 +4,16 @@ const Form = require('../database/models/form.model');
 const Question = require('../database/models/question.model');
 const AnswerVariants = require('../database/models/answer_variants.model');
 const mongoose = require('mongoose');
+const auth = require("../middleware/auth");
 
 const ObjectId = mongoose.Types.ObjectId;
 let ensureLoggedIn = ensureLogIn();
 
 const formController = express.Router();
 
-formController.get('/', ensureLoggedIn, async (req, res) => {
+formController.get('/', auth, async (req, res) => {
     try {
-        let result = await Form.find({createdBy: req.user._id}).lean();
+        let result = await Form.find({createdBy: req.user}).populate('Question');
         res.send(result);
     } catch (e) {
         res.send(e);
@@ -35,11 +36,11 @@ formController.get('/:id', ensureLoggedIn, async (req, res) => {
     }
 })
 
-formController.post('/', ensureLoggedIn, async (req, res) => {
+formController.post('/', auth, async (req, res) => {
     try {
         let data = {
             _id: new mongoose.Types.ObjectId(),
-            createdBy: req.user._id,
+            createdBy: req.user,
             name: req.body.name,
             description: req.body.description
         }
@@ -52,7 +53,7 @@ formController.post('/', ensureLoggedIn, async (req, res) => {
                     question: question.question,
                     formId: docs._id
                 }).then(questionDocs => {
-                    if (question.type === 'multiselect') {
+                    if (question.type === 'radiobutton') {
                         question.answers.forEach(async answer => {    
                             await AnswerVariants.create({
                                 _id: new mongoose.Types.ObjectId(),
@@ -73,7 +74,7 @@ formController.post('/', ensureLoggedIn, async (req, res) => {
     }
 })
 
-formController.delete("/:id", ensureLoggedIn, async (req, res) => {
+formController.delete("/:id", auth, async (req, res) => {
     try {
         const id = new ObjectId(req.params.id);
 
@@ -81,7 +82,7 @@ formController.delete("/:id", ensureLoggedIn, async (req, res) => {
             if (form == null) {
                 res.status(404).send('Form not found or already deleted');
             } else {
-                if (form.createdBy.equals(req.user._id)) {
+                if (form.createdBy.equals(req.user)) {
                     form.remove(function (err) {
                         if (err) {
                             return res.status(500).send(err)
