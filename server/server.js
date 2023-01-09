@@ -12,6 +12,7 @@ require("dotenv").config({path: "./config.env"});
 app.use(cors());
 app.use(express.json());
 
+
 app.use(
     session({secret: "Our little secret.", resave: false, saveUninitialized: false})
 );
@@ -19,7 +20,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 6000;
 
 app.listen(port, () => {
     // mongoose connection settings
@@ -34,4 +35,4 @@ app.listen(port, () => {
 });
 
 app.use('/', controllers.userController);
-app.use('/form', controllers.formController);
+app.use('/forms', controllers.formController);
