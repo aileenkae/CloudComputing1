@@ -23,6 +23,7 @@ app.use(passport.session());
 const port = process.env.PORT || 6000;
 
 app.listen(port, () => {
+    console.log(process.env.ATLAS_URI)
     // mongoose connection settings
     mongoose.connect(process.env.ATLAS_URI, {
         useNewUrlParser: true,
