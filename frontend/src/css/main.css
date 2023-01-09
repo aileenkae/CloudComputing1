@@ -5,3 +5,18 @@
 .container {
     @apply mx-auto max-w-7xl px-4 sm:px-24;
 }
+
+.question-field {
+    color: black;
+    box-sizing: border-box;
+    font-weight: 400;
+    line-height: 40px;
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 35px;
+}
+
+.button {
+    @apply bg-indigo-700 rounded-xl text-white py-2 px-4 hover:bg-indigo-600 transition;
+}
