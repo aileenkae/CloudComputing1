@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
-const passportLocalMongoose = require("passport-local-mongoose");
 const findOrCreate = require("mongoose-findorcreate");
-
-// const userSchema = new mongoose.Schema({     username: String,     name:
-// String,     googleId: String,     secret: String });
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -12,17 +8,29 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+
     password: {
         type: String,
         required: true,
         minlength: 5
     },
+
     name: {
         type: String
-    }
+    },
+
+    forms: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Form"
+    }],
+
+    responses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Response"
+    }],
 });
 
-userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
+userSchema.plugin(require('mongoose-autopopulate'));
 
 module.exports = userSchema;

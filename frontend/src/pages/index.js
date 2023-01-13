@@ -1,8 +1,9 @@
 import {Home} from './home';
 import {Login} from './login';
 import {Form} from './form'
-import { FormEdit } from './form_edit';
+import { Response } from './response';
+import {Register} from './register';
 
-const pages = {Home, Login, Form, FormEdit}
+const pages = {Home, Login, Form, Response, Register}
 
 export default pages

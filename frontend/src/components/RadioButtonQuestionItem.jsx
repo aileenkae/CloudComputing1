@@ -16,6 +16,7 @@ export default function RadioButtonQuestionItem(props) {
             <div className="flex items-center">
                 <RadioButtonUncheckedIcon className="text-gray-400 mr-2" />
                 <input
+                    value={props.answer.answer}
                     type="text"
                     className="question-field"
                     placeholder="Frage Beschreibung"

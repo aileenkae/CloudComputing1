@@ -1,5 +1,4 @@
 const express = require("express");
-const ensureLogIn = require('connect-ensure-login').ensureLoggedIn;
 const Form = require('../database/models/form.model');
 const Question = require('../database/models/question.model');
 const AnswerVariants = require('../database/models/answer_variants.model');
@@ -7,30 +6,35 @@ const mongoose = require('mongoose');
 const auth = require("../middleware/auth");
 
 const ObjectId = mongoose.Types.ObjectId;
-let ensureLoggedIn = ensureLogIn();
 
 const formController = express.Router();
 
 formController.get('/', auth, async (req, res) => {
     try {
-        let result = await Form.find({createdBy: req.user}).populate('Question');
-        res.send(result);
+        let forms = await Form.find({user: req.user});
+        res.send(forms);
     } catch (e) {
         res.send(e);
     }
 })
 
-formController.get('/:id', ensureLoggedIn, async (req, res) => {
+formController.get('/:id', auth, async (req, res) => {
     try {
         const id = new ObjectId(req.params.id);
 
-        await Form.findById(id).then(async (form) => {
-            if (form == null) {
-                res.status(404).send('Form not found');
-            } else {
-                res.status(200).json(form)
-            }
-        })
+        await Form
+            .findById(id)
+            .then(async (form) => {
+                if (form == null || !form.user.equals(req.user)) {
+                    res
+                        .status(404)
+                        .send('Form not found');
+                } else {
+                    res
+                        .status(200)
+                        .json(form)
+                }
+            })
     } catch (error) {
         res.send(error)
     }
@@ -38,38 +42,37 @@ formController.get('/:id', ensureLoggedIn, async (req, res) => {
 
 formController.post('/', auth, async (req, res) => {
     try {
-        let data = {
-            _id: new mongoose.Types.ObjectId(),
-            createdBy: req.user,
-            name: req.body.name,
-            description: req.body.description
-        }
-        
-        await Form.create(data).then((docs) => {
-            req.body.questions.forEach(async question => {
-                await Question.create({
-                    _id: new mongoose.Types.ObjectId(),
-                    fieldType: question.type,
-                    question: question.question,
-                    formId: docs._id
-                }).then(questionDocs => {
-                    if (question.type === 'radiobutton') {
-                        question.answers.forEach(async answer => {    
-                            await AnswerVariants.create({
-                                _id: new mongoose.Types.ObjectId(),
-                                answer: answer.answer,
-                                questionId: questionDocs._id
-                            }).then(answerDocs => {
-                                console.log('answer created')
-                            })
-                        })
-                    }
-                })
+        let {name, description, questions} = req.body;
+
+        if (!name) 
+            return res.status(400).json({msg: "Please fill name field"});
+
+        let form = await Form.create({
+            user: req.user,
+            name: name,
+            description: description
+        });
+
+        questions.forEach(async question => {
+            let newQuestion = await Question.create({
+                fieldType: question.fieldType,
+                question: question.question,
+                form: form._id
             });
-            res.send(docs)
+
+            if (question.fieldType === 'radiobutton') {
+                question.answer_variants.forEach(async answer => {
+                    await AnswerVariants.create({
+                        answer: answer.answer,
+                        question: newQuestion._id,
+                        form: form._id
+                    });
+                })
+            }
         })
+
+        res.send(form)
     } catch (error) {
-        console.log(error)
         res.status(400).send(error)
     }
 })
@@ -77,47 +80,66 @@ formController.post('/', auth, async (req, res) => {
 formController.delete("/:id", auth, async (req, res) => {
     try {
         const id = new ObjectId(req.params.id);
+        const form = await Form.findById(id)
 
-        await Form.findById(id).then(async (form) => {
-            if (form == null) {
-                res.status(404).send('Form not found or already deleted');
+        if (form == null) {
+            res.status(404).send('Form not found or already deleted');
+        } else {
+            if (form.user.equals(req.user)) {
+                form.remove(function (err) {
+                    if (err) {
+                        return res.status(500).send(err)
+                    }
+
+                    return res.status(202).send("Form Deleted")
+                });
             } else {
-                if (form.createdBy.equals(req.user)) {
-                    form.remove(function (err) {
-                        if (err) {
-                            return res.status(500).send(err)
-                        }
-
-                        return res.status(202).send("Form Deleted")
-                    });
-                } else {
-                    res.status(401).send("You are not the owner of this Form");
-                }
+                res.status(401).send("You are not the owner of this Form");
             }
-        });
-
-    } catch (error) {}
+        }
+    } catch (error) {
+        res.status(400).send(error)
+    }
 })
 
-formController.put("/:id", ensureLoggedIn, async (req, res) => {
+formController.put("/:id", auth, async (req, res) => {
     try {
         const id = new ObjectId(req.params.id);
+        let {name, description, questions} = req.body;
 
-        let data = {
-            name: req.query.name,
-            description: req.query.description
-        }
+        let form = await Form.findOne(id)
 
-        Form.findByIdAndUpdate(id, data, {
-            new: true
-        }, (err, result) => {
-            if (err) {
-                res.status(500).send(err)
-            } else {
-                res.status(200).json(result)
+        Question.deleteMany({form: form._id}, function (err) {
+            console.log(err)
+        })
+        AnswerVariants.deleteMany({form: form._id}, function (err) {
+            console.log(err)
+        })
+
+        form.name = name
+        form.description = description
+
+        form.save()
+
+        questions.forEach(async question => {
+            let newQuestion = await Question.create({
+                fieldType: question.fieldType,
+                question: question.question,
+                form: form._id
+            });
+
+            if (question.fieldType === 'radiobutton') {
+                question.answer_variants.forEach(async answer => {
+                    await AnswerVariants.create({
+                        answer: answer.answer,
+                        question: newQuestion._id,
+                        form: form._id
+                    });
+                })
             }
-        });
+        })
 
+        res.send(form)
     } catch (error) {
         res.send(error)
     }

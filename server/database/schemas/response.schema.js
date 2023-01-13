@@ -1,24 +1,31 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const relationship = require("mongoose-relationship");
 
-var ResponseSchema = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-
-    formId: {
+const ResponseSchema = new mongoose.Schema({
+    form: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Form'
+        ref: 'Form',
+        childPath: 'responses'
     },
 
-    userId: {
+    user: {
         type: String,
-		ref: "User"
+		ref: "User",
+        childPath: 'responses'
     },
 
-	questionId: {
+	question: {
 		type: String,
-		ref: "Question"
+		ref: "Question",
+        childPath: 'responses'
 	},
 
 	answer: String
 }, {timestamps: true});
+
+ResponseSchema.plugin(relationship, { relationshipPathName: 'form' })
+ResponseSchema.plugin(relationship, { relationshipPathName: 'user' })
+ResponseSchema.plugin(relationship, { relationshipPathName: 'question' })
+ResponseSchema.plugin(require('mongoose-autopopulate'));
 
 module.exports = ResponseSchema;

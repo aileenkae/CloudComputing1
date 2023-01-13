@@ -1,14 +1,22 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const relationship = require("mongoose-relationship");
 
-var AnswerVariantsSchema = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-
-    questionId: {
+const AnswerVariantsSchema = new mongoose.Schema({
+    question: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Question'
+        ref: 'Question',
+        childPath: 'answer_variants'
+    },
+
+    form: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Form',
     },
 
     answer: String,
 }, {timestamps: true});
+
+AnswerVariantsSchema.plugin(relationship, { relationshipPathName: 'question' });
+AnswerVariantsSchema.plugin(require('mongoose-autopopulate'));
 
 module.exports = AnswerVariantsSchema;

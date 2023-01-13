@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require('mongoose');
 const session = require("express-session");
-const passport = require("passport");
 const controllers = require('./controller');
 
 const app = express();
@@ -17,14 +16,9 @@ app.use(
     session({secret: "Our little secret.", resave: false, saveUninitialized: false})
 );
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 const port = process.env.PORT || 6000;
 
 app.listen(port, () => {
-    console.log(process.env.ATLAS_URI)
-    // mongoose connection settings
     mongoose.connect(process.env.ATLAS_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true

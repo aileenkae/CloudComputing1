@@ -1,17 +1,17 @@
 import React, {useState, useContext} from 'react';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import userContext from '../context/userContext';
 import axios from 'axios';
 import ErrorNotice from '../components/ErrorNotice';
 import {useNavigate} from 'react-router-dom';
+import Link from '@mui/material/Link';
 
-export function Login() {
+export function Register() {
+    const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [passwordConfirmation, setPasswordConfirmation] = useState();
     const [error, setError] = useState();
     const {setUserData} = useContext(userContext);
     const navigate = useNavigate();
@@ -19,16 +19,15 @@ export function Login() {
     const submit = async (e) => {
         e.preventDefault();
         try {
-            const loginUser = {
+            const user = {
+                name,
                 email,
-                password
+                password,
+                passwordConfirmation
             };
-            const loginResponse = await axios.post(
-                "http://localhost:8000/login",
-                loginUser
-            );
-            setUserData({token: loginResponse.data.token, user: loginResponse.data.user});
-            localStorage.setItem("auth-token", loginResponse.data.token);
+            const response = await axios.post("http://localhost:8000/register", user);
+            setUserData({token: response.data.token, user: response.data.user});
+            localStorage.setItem("auth-token", response.data.token);
             navigate('/')
         } catch (err) {
             err.response.data.msg && setError(err.response.data.msg)
@@ -38,21 +37,28 @@ export function Login() {
     return (
         <div className='flex flex-col w-full items-center gap-4'>
             {error && <ErrorNotice message={error} clearError={() => setError(undefined)}/>}
+
             <div className="bg-white rounded-xl px-12 py-8 h-min w-max">
                 <form onSubmit={submit}>
                     <Typography className='text-center' component="h1" variant="h5">
-                        Sign in
+                        Register
                     </Typography>
 
                     <div className='flex flex-col'>
+                        <TextField
+                            onChange={e => setName(e.target.value)}
+                            margin="normal"
+                            fullWidth="fullWidth"
+                            required="required"
+                            label="Name"
+                            autoComplete="name"
+                            autoFocus="autoFocus"/>
                         <TextField
                             onChange={e => setEmail(e.target.value)}
                             margin="normal"
                             fullWidth="fullWidth"
                             required="required"
-                            id="email"
                             label="Email Address"
-                            name="email"
                             autoComplete="email"
                             autoFocus="autoFocus"/>
 
@@ -61,32 +67,31 @@ export function Login() {
                             margin="normal"
                             required="required"
                             fullWidth="fullWidth"
-                            name="password"
                             label="Password"
                             type="password"
-                            id="password"
                             autoComplete="current-password"/>
 
-                        <FormControlLabel
-                            control={<Checkbox value = "remember" color = "primary" />}
-                            label="Remember me"/>
+                        <TextField
+                            onChange={e => setPasswordConfirmation(e.target.value)}
+                            margin="normal"
+                            required="required"
+                            fullWidth="fullWidth"
+                            label="Password confirmation"
+                            type="password"
+                            autoComplete="current-password"/>
 
                         <button className='button my-2' type="submit">
-                            Sign In
+                            Register
                         </button>
 
                         <div className="flex gap-12 items-center justify-between">
-                            <Link href="/forgot-password">
-                                Forgot password?
-                            </Link>
-
-                            <Link href="/register">
-                                New here? Sign Up
+                            <Link href="/login">
+                                Already have an account? Sign in
                             </Link>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-    )
+    );
 }

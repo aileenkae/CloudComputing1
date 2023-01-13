@@ -16,13 +16,13 @@ userController.get("/logout", function (req, res) {
 
 userController.post("/register", async (req, res) => {
     try {
-        let {email, password, passwordCheck, name} = req.body;
+        let {email, password, passwordConfirmation, name} = req.body;
 
-        if (!email || !password || !passwordCheck) 
+        if (!email || !password || !passwordConfirmation) 
             return res.status(400).json({msg: "Not all fields have been entered."});
         if (password.length < 5) 
             return res.status(400).json({msg: "The password needs to be at least 5 characters long."});
-        if (password !== passwordCheck) 
+        if (password !== passwordConfirmation) 
             return res.status(400).json({msg: "Enter the same password twice for verification."});
 
         const existingUser = await User.findOne({email: email});

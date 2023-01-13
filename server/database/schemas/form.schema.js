@@ -1,11 +1,11 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const relationship = require("mongoose-relationship");
 
-var FormSchema = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-
-    createdBy: {
+const FormSchema = new mongoose.Schema({
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        childPath: 'forms'
     },
 
     name: String,
@@ -20,11 +20,19 @@ var FormSchema = new mongoose.Schema({
         default: false
     },
 
-    formType: {
-        type: String,
-        default: "anonymous"
-    }
+    questions: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Question",
+        autopopulate: true
+    }],
 
+    responses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Response"
+    }]
 }, {timestamps: true});
+
+FormSchema.plugin(relationship, { relationshipPathName: "user" })
+FormSchema.plugin(require('mongoose-autopopulate'));
 
 module.exports = FormSchema;

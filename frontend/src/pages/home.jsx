@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useContext, useState, useEffect} from 'react';
 import { AddFormButton } from '../components/AddFormButton';
-import { FormPreview } from '../components/FormPreview';
+import FormItem from '../components/FormItem';
 import userContext from '../context/userContext';
 
 export function Home() {
@@ -16,12 +16,11 @@ export function Home() {
                 }
             })
 
-            console.log(formResponse)
             setForms(formResponse.data)
         }
 
         getForms();
-    }, []);
+    }, [userData]);
 
     const handleFormDelete = (form) => {
         axios.delete('http://localhost:8000/forms/' + form._id, {
@@ -47,9 +46,10 @@ export function Home() {
                     {
                         forms.map(form => {
                             return(
-                                <div className='col-span-4'>
-                                    <FormPreview onDelete={() => handleFormDelete(form)} form={form} />
+                                <div className='col-span-4' key={form._id}>
+                                    <FormItem onDelete={() => handleFormDelete(form)} form={form} />
                                 </div>
+                                
                             )
                         })
                     }

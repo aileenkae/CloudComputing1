@@ -1,10 +1,8 @@
 const express = require("express");
-const ensureLogIn = require('connect-ensure-login').ensureLoggedIn;
 const Response = require('../database/models/response.model');
 const mongoose = require('mongoose');
 
 const ObjectId = mongoose.Types.ObjectId;
-let ensureLoggedIn = ensureLogIn();
 
 const responseController = express.Router();
 

@@ -21,66 +21,11 @@ export function Form() {
     const [formDescription, setFormDescription] = useState(location.state.description)
     const [error, setError] = useState();
 
-    const addQuestion = (type) => {
-        setQuestions((prevState) => {
-            return [
-                ...prevState, {
-                    _id: uuid(),
-                    fieldType: type,
-                    question: '',
-                    answer_variants: []
-                }
-            ];
-        });
-    }
 
-    const editQuestion = (editedQuestion) => {
-        let index = questions.indexOf(
-            questions.filter(q => q._id === editedQuestion._id)[0]
-        )
-        questions[index] = editedQuestion
-    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        try {
-            const form = {
-                name: formTitle,
-                description: formDescription,
-                questions: questions
-            };
-    
-            if (location.state.isEditing) {
-                axios.put('http://localhost:8000/forms/' + location.state._id, form, {
-                    headers: {
-                        "x-auth-token": userData.token
-                    }
-                }).then(response => {
-                    // navigate('/')
-                }).catch(err => {
-                    err.response.data.msg && setError(err.response.data.msg)
-                })
-            } else {
-                axios.post('http://localhost:8000/forms', form, {
-                    headers: {
-                        "x-auth-token": userData.token
-                    }
-                }).then(response => {
-                    navigate('/')
-                }).catch(err => {
-                    err.response.data.msg && setError(err.response.data.msg)
-                })
-            }
-
-        } catch(err) {
-            err.response.data.msg && setError(err.response.data.msg)
-        }
     };
-
-    const deleteQuestion = (question) => {
-        setQuestions(questions.filter((q) => q._id !== question._id))
-    }
 
     return (
         <div className="flex flex-col items-center gap-5 justify-top">

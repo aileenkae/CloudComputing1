@@ -2,6 +2,7 @@ import React from "react";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import RadioButtonQuestionItem from "./RadioButtonQuestionItem";
+import uuid from "react-uuid";
 
 class RadioButtonQuestion extends React.Component {
     constructor(props) {
@@ -20,9 +21,9 @@ class RadioButtonQuestion extends React.Component {
     }
 
     checkAnswers() {
-        if (this.state.question.answers.length === 0) {
-            this.state.question.answers.push({
-                id: 0,
+        if (this.state.question.answer_variants.length === 0) {
+            this.state.question.answer_variants.push({
+                _id: uuid(),
                 answer: ''
             })
         }
@@ -33,8 +34,8 @@ class RadioButtonQuestion extends React.Component {
     addAnswer() {
         let question = this.state.question;
 
-        question.answers.push({
-            id: question.answers.length + 1,
+        question.answer_variants.push({ 
+            _id: uuid(),
             answer: ''
         })
 
@@ -45,7 +46,7 @@ class RadioButtonQuestion extends React.Component {
 
     deleteAnswer(answer) {
         let question = this.state.question;
-        question.answers = question.answers.filter((a) => a.id !== answer.id)
+        question.answer_variants = question.answer_variants.filter((a) => a._id !== answer._id)
         this.setState({question: question})
         this.props.onChange(question)
     }
@@ -53,11 +54,11 @@ class RadioButtonQuestion extends React.Component {
     answerChanged(answer) {
         let question = this.state.question;
 
-        let index = question.answers.indexOf(
-            question.answers.filter(a => a.id === answer.id)[0]
+        let index = question.answer_variants.indexOf(
+            question.answer_variants.filter(a => a._id === answer._id)[0]
         )
 
-        question.answers[index] = answer
+        question.answer_variants[index] = answer
 
         this.setState({question: question})
         this.props.onChange(question)
@@ -72,9 +73,10 @@ class RadioButtonQuestion extends React.Component {
 
     render() {
         return (
-            <div className="bg-white border-t-8 border-indigo-700 rounded-xl flex flex-col">
+            <div className="w-full bg-white border-t-8 border-indigo-700 rounded-xl flex flex-col">
                 <div className="my-8 mx-12">
                     <input
+                        value={this.props.question.question}
                         type="text"
                         className="question-field text-lg mb-2"
                         onChange={this.handleQuestionChange}
@@ -82,9 +84,10 @@ class RadioButtonQuestion extends React.Component {
     
                     <FormControl className="w-full">
                         {
-                            this.props.question.answers.map((answer) => {
+                            this.props.question.answer_variants.map((answer) => {
                                 return (
                                     <RadioButtonQuestionItem
+                                        key={answer._id}
                                         answer={answer}
                                         onAnswerChange={(answer) => this.answerChanged(answer)}
                                         onDelete={() => this.deleteAnswer(answer)}/>
@@ -95,6 +98,11 @@ class RadioButtonQuestion extends React.Component {
                     </FormControl>
                 </div>
     
+                <div className="flex items-center justify-end">
+                    <Button onClick={() => this.props.onDelete(this.props.question)} className="text-red-700 m-2">
+                        Löschen
+                    </Button>
+                </div>
             </div>
         );
     }
