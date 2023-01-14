@@ -11,7 +11,7 @@ import uuid from "react-uuid";
 import ErrorNotice from "../components/ErrorNotice";
 import {useNavigate, useLocation} from 'react-router-dom';
 
-export function Form() {
+export function Response() {
     const {userData} = useContext(userContext);
     const navigate = useNavigate()
     const location = useLocation()
@@ -21,11 +21,33 @@ export function Form() {
     const [formDescription, setFormDescription] = useState(location.state.description)
     const [error, setError] = useState();
 
+    const addQuestion = (type) => {
+        setQuestions((prevState) => {
+            return [
+                ...prevState, {
+                    _id: uuid(),
+                    fieldType: type,
+                    question: '',
+                    answer_variants: []
+                }
+            ];
+        });
+    }
 
+    const editQuestion = (editedQuestion) => {
+        let index = questions.indexOf(
+            questions.filter(q => q._id === editedQuestion._id)[0]
+        )
+        questions[index] = editedQuestion
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
     };
+
+    const deleteQuestion = (question) => {
+        setQuestions(questions.filter((q) => q._id !== question._id))
+    }
 
     return (
         <div className="flex flex-col items-center gap-5 justify-top">
