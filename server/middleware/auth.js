@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
-
+// This is a middleware function that will be used to verify the token
 const auth = (req, res, next) => {
-    try {
+    try { //try to verify the token if it is valid if not send a response to the frontend
         const token = req.header("x-auth-token");
         if (!token) 
             return res
@@ -10,8 +10,8 @@ const auth = (req, res, next) => {
 
         const verified = jwt.verify(token, process.env.JWT_SECRET);
 
-        if (!verified) 
-            return res
+        if (!verified) //if the token is not verified, this will send a response to the frontend
+            return res //this is sending a response to the frontend
                 .status(401)
                 .json({msg: "Token verification failed, authorization denied"});
         req.user = verified.id;
