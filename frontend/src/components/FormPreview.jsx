@@ -4,6 +4,8 @@ import IconButton from '@mui/material/IconButton';
 import FormPreviewIcon from '../images/form_preview_icon.png'
 import {Link} from 'react-router-dom';
 
+// FormPreview component takes in props and renders a form preview with the options to edit, view, and delete the form
+
 export function FormPreview(props) {
     return (
         <div

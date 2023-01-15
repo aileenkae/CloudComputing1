@@ -5,6 +5,9 @@ import Typography from '@mui/material/Typography';
 import {Button, CardActionArea, CardActions} from '@mui/material';
 import FormPreviewIcon from '../images/form_preview_icon.png' 
 import { Link } from 'react-router-dom';
+
+// FormItem component takes in props and renders a card for a form with options to edit, answer, or delete the form
+
 export default function FormItem(props) {
     return (
         <Card className='w-full'>
