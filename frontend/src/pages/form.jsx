@@ -21,6 +21,7 @@ export function Form() {
     const [formDescription, setFormDescription] = useState(location.state.description)
     const [error, setError] = useState();
 
+    // function to add a new question to the form
     const addQuestion = (type) => {
         setQuestions((prevState) => {
             return [
@@ -34,13 +35,14 @@ export function Form() {
         });
     }
 
+    // function to edit a question in the form
     const editQuestion = (editedQuestion) => {
         let index = questions.indexOf(
             questions.filter(q => q._id === editedQuestion._id)[0]
         )
         questions[index] = editedQuestion
     }
-
+    // function to handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -51,6 +53,7 @@ export function Form() {
                 questions: questions
             };
     
+            // if the form is being edited, update the form
             if (location.state.isEditing) {
                 axios.put('http://localhost:8000/forms/' + location.state._id, form, {
                     headers: {
@@ -78,6 +81,8 @@ export function Form() {
         }
     };
 
+    
+    // function to add a new question to the form
     const deleteQuestion = (question) => {
         setQuestions(questions.filter((q) => q._id !== question._id))
     }
