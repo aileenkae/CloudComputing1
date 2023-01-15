@@ -4,6 +4,7 @@ import pages from './pages';
 import AuthVerify from './common/AuthVerify';
 import DefaultLayout from './layouts/default';
 
+// set routes for different pages
 function App() {
     return (
         <BrowserRouter>

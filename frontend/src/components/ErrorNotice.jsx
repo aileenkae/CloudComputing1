@@ -1,4 +1,6 @@
 import React from 'react';
+
+// This function adds an error message
 function ErrorNotice(props) {
     return (
         <div className="w-full bg-red-400 py-2 px-4 rounded-xl text-white flex items-center justify-between">
