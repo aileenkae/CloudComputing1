@@ -7,9 +7,7 @@ import ErrorNotice from '../components/ErrorNotice';
 import {useNavigate} from 'react-router-dom';
 import Link from '@mui/material/Link';
 
-// Site for user to registrate
 export function Register() {
-    // set some initial states
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -18,7 +16,6 @@ export function Register() {
     const {setUserData} = useContext(userContext);
     const navigate = useNavigate();
 
-    // create a user object with the input field values
     const submit = async (e) => {
         e.preventDefault();
         try {
@@ -28,12 +25,10 @@ export function Register() {
                 password,
                 passwordConfirmation
             };
-            // send a post request to the server to register the user
             const response = await axios.post("http://localhost:8000/register", user);
             setUserData({token: response.data.token, user: response.data.user});
             localStorage.setItem("auth-token", response.data.token);
             navigate('/')
-            // error handling 
         } catch (err) {
             err.response.data.msg && setError(err.response.data.msg)
         }
@@ -41,14 +36,14 @@ export function Register() {
 
     return (
         <div className='flex flex-col w-full items-center gap-4'>
-            {/* error handling */}
             {error && <ErrorNotice message={error} clearError={() => setError(undefined)}/>}
+
             <div className="bg-white rounded-xl px-12 py-8 h-min w-max">
                 <form onSubmit={submit}>
                     <Typography className='text-center' component="h1" variant="h5">
                         Register
                     </Typography>
-                    {/* registration form */}
+
                     <div className='flex flex-col'>
                         <TextField
                             onChange={e => setName(e.target.value)}

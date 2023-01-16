@@ -9,16 +9,23 @@ const ResponseSchema = new mongoose.Schema({
     },
 
     user: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
 		ref: "User",
-        childPath: 'responses'
+        childPath: 'responses',
+        autopopulate: true
     },
 
 	question: {
-		type: String,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: "Question",
-        childPath: 'responses'
+        childPath: 'responses',
 	},
+
+    answer_id: {
+        type: mongoose.Schema.Types.ObjectId,
+		ref: "AnswerVariant",
+        autopopulate: false
+    },
 
 	answer: String
 }, {timestamps: true});

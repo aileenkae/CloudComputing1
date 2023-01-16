@@ -83,7 +83,7 @@ export function Form() {
     }
 
     return (
-        <div className="flex flex-col items-center gap-5 justify-top">
+        <div className="w-full flex flex-col items-center gap-5 justify-top">
             {error && <ErrorNotice message={error} clearError={() => setError(undefined)}/>}
 
             <FormHeader
