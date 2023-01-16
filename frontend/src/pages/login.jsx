@@ -71,16 +71,16 @@ export function Login() {
                             control={<Checkbox value = "remember" color = "primary" />}
                             label="Remember me"/>
 
-                        <button className='button my-2' type="submit">
+                        <button className='button my-2' type="submit" style={{backgroundColor: '#00cc6d'}}>
                             Sign In
                         </button>
 
                         <div className="flex gap-12 items-center justify-between">
-                            <Link href="/forgot-password">
+                            <Link href="/forgot-password" style={{color: '#00a357'}}>
                                 Forgot password?
                             </Link>
 
-                            <Link href="/register">
+                            <Link href="/register" style={{color: '#00a357'}}>
                                 New here? Sign Up
                             </Link>
                         </div>

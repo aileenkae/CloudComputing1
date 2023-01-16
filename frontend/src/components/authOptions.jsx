@@ -17,13 +17,13 @@ export default function AuthOptions() {
         <div className="flex items-center justify-end">
             {
             userData.user
-                ? (<button className='button' onClick={logout}>Logout</button>)
+                ? (<button className='button' style={{backgroundColor: "#F5F5F5", color: '#00cc6d' }} onClick={logout}>Logout</button>)
                 : (<>
                     <Link to='/login'>
-                        <button className='button mr-2'>Login</button>
+                        <button className='button mr-2' style={{backgroundColor: "#F5F5F5", color: '#00cc6d'}} >Login</button>
                     </Link>
                     <Link to='/register'>
-                        <button className='button'>Register</button>
+                        <button className='button' style={{backgroundColor: "#F5F5F5", color: '#00cc6d'}} >Register</button>
                     </Link>
                 </>)
             }

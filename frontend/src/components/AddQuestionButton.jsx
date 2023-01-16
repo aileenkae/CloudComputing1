@@ -23,6 +23,7 @@ export function AddQuestionButton(props) {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
+            style={{color: '#00a357'}}
         >Frage hizufügen
         </Button>
 
