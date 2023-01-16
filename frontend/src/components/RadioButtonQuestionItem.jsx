@@ -1,3 +1,8 @@
+/* 
+1. The component receives a props object which contains all the properties that are passed to the component
+2. The handleAnswerChange function is executed when the input field value changes. It then passes the new value to the parent component
+3. The component returns a div element with a text input field and a button. The button is used to delete the current question item */
+
 import React from "react";
 import Button from "@mui/material/Button";
 import ClearIcon from '@mui/icons-material/Clear';

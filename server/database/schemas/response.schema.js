@@ -8,21 +8,21 @@ const ResponseSchema = new mongoose.Schema({
         childPath: 'responses'
     },
 
-    user: {
+    user: { //Creating a ObjectID for the user
         type: String,
 		ref: "User",
         childPath: 'responses'
     },
 
-	question: {
+	question: { //Creating a ObjectID for the question
 		type: String,
 		ref: "Question",
-        childPath: 'responses'
+        childPath: 'responses' //with this childPath, we can access the responses of the question
 	},
 
 	answer: String
 }, {timestamps: true});
-
+//plugin is used to create the relationship between the form and the responses
 ResponseSchema.plugin(relationship, { relationshipPathName: 'form' })
 ResponseSchema.plugin(relationship, { relationshipPathName: 'user' })
 ResponseSchema.plugin(relationship, { relationshipPathName: 'question' })

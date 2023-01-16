@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const relationship = require("mongoose-relationship");
-
+//This QuestionSchema is used to create the question collection in the database
 const QuestionSchema = new mongoose.Schema({
-    form: {
+    form: { //Creating a ObjectID for the form
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Form',
         childPath: 'questions'
@@ -12,13 +12,13 @@ const QuestionSchema = new mongoose.Schema({
 
     question: String,
 
-    answer_variants: [{
+    answer_variants: [{ //Array of answer variants to store the answer variants of the question
         type: mongoose.Schema.Types.ObjectId,
         ref: "AnswerVariants",
         autopopulate: true
     }],
 
-    responses: [{
+    responses: [{ //Array of responses to store the responses of the users
         type: mongoose.Schema.Types.ObjectId,
         ref: "Response",
         autopopulate: true
