@@ -20,7 +20,7 @@ export function Response(props) {
     useEffect(() => {
         const getForm = async () => {
             const formResponse = await axios.get(
-                'http://localhost:8000/forms/' + params.id,
+                'http://localhost:8000/statistic/' + params.id,
                 {
                     headers: {
                         "x-auth-token": userData.token
@@ -75,7 +75,7 @@ export function Response(props) {
         return (
             <div className="px-12 w-full flex flex-col items-center gap-5 justify-top">
                 {error && <ErrorNotice message={error} clearError={() => setError(undefined)}/>}
-                <ResponseHeader title={form.name} description={form.description}/> 
+                <ResponseHeader title={form.name} description={form.description}/>
                 {
                     form.questions.map((question) => (
                         <ResponseItem

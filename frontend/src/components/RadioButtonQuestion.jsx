@@ -20,7 +20,6 @@ class RadioButtonQuestion extends React.Component {
         this.handleQuestionChange = this.handleQuestionChange.bind(this)
     }
 
-    //This function check if there is any answer option in the question, if not it will add a default option
     checkAnswers() {
         if (this.state.question.answer_variants.length === 0) {
             this.state.question.answer_variants.push({
@@ -32,7 +31,6 @@ class RadioButtonQuestion extends React.Component {
         this.props.onChange(this.state.question)
     }
 
-    //This function is used to add a new answer option to the question
     addAnswer() {
         let question = this.state.question;
 
@@ -46,7 +44,6 @@ class RadioButtonQuestion extends React.Component {
         this.props.onChange(question)
     };
 
-    //This function is used to delete an answer option from the question
     deleteAnswer(answer) {
         let question = this.state.question;
         question.answer_variants = question.answer_variants.filter((a) => a._id !== answer._id)
@@ -54,7 +51,6 @@ class RadioButtonQuestion extends React.Component {
         this.props.onChange(question)
     }
 
-     //This function is used when an answer option is changed
     answerChanged(answer) {
         let question = this.state.question;
 
@@ -68,7 +64,6 @@ class RadioButtonQuestion extends React.Component {
         this.props.onChange(question)
     }
 
-    //This function is used when the question text is changed
     handleQuestionChange(event) {
         let question = this.props.question
         question.question = event.target.value

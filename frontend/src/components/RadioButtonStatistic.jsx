@@ -1,5 +1,5 @@
 import React from "react";
-import PieChart from "./ChartExample";
+import PieChart from './PieChart'
 
 export default function RadioButtonStatistic({question}) {
     return (

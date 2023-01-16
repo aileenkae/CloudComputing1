@@ -35,7 +35,7 @@ export default function SingleLineResponse(props) {
                     {
                         props.question.answer_variants.map(av => {
                             return(
-                                <FormControlLabel key={av._id} value={av._id} control={<Radio />} label={av.answer + av._id} />
+                                <FormControlLabel key={av._id} value={av._id} control={<Radio />} label={av.answer} />
                             )
                         })
                     }
