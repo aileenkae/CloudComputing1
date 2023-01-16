@@ -1,25 +1,21 @@
 import React, {useState} from "react";
 import {Button, Fade, Menu, MenuItem} from "@mui/material";
 
-// This function returns a button that opens a dropdown menu with options to add different types of questions
+
 export function AddQuestionButton(props) {
-    // state to keep track of whether the menu is open or closed
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
-    // function to open the menu
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
-    // function to close the menu
     const handleClose = () => {
         setAnchorEl(null);
     };
 
     return (
         <>
-        {/* button that opens the menu */}
         <Button
             className="w-min"
             id="fade-button"
@@ -29,8 +25,7 @@ export function AddQuestionButton(props) {
             onClick={handleClick}
         >Frage hizufügen
         </Button>
-        
-        {/* menu that appears when the button is clicked */}
+
         <Menu
             id="fade-menu"
             anchorEl={anchorEl}

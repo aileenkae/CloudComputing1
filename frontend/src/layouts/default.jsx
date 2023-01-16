@@ -4,9 +4,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import userContext from '../context/userContext';
 import { useLocation } from 'react-router-dom';
 
-// DefaultLayout component provides a default layout for the website
-// It checks if the user is logged in, if not it will show a loading spinner, otherwise it renders the header and the passed children
-
 export default function DefaultLayout(props) {
     const location = useLocation();
     const {userData} = useContext(userContext);

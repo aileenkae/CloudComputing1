@@ -16,10 +16,8 @@ export function Login() {
     const {setUserData} = useContext(userContext);
     const navigate = useNavigate();
 
-    // function to handle form submission
     const submit = async (e) => {
         e.preventDefault();
-        // create an object with the email and password
         try {
             const loginUser = {
                 email,
@@ -33,7 +31,6 @@ export function Login() {
             localStorage.setItem("auth-token", loginResponse.data.token);
             navigate('/')
         } catch (err) {
-            // if there's an error, set the error state with the error message
             err.response.data.msg && setError(err.response.data.msg)
         }
     };

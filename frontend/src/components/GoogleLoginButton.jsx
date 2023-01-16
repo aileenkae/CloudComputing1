@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 
-// GoogleLoginButton component renders a button with a google icon and text "Sign in with Google"
-
 export default function GoogleLoginButton() {
     return (
         <Button

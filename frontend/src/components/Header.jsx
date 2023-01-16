@@ -3,8 +3,6 @@ import AdbIcon from '@mui/icons-material/Description';
 import SearchInput from './SearchInput';
 import AuthOptions from './authOptions';
 
-// Header component renders the website header with a logo, search bar, and auth options
-
 export default function Header() {
     return (
         <div className='container py-4 flex justify-between items-center'>
