@@ -68,7 +68,7 @@ export function Login() {
                             autoComplete="current-password"/>
 
                         <FormControlLabel
-                            control={<Checkbox value = "remember" color = "primary" />}
+                            control={<Checkbox value = "remember" style={{color: '#00cc6d'}} />}
                             label="Remember me"/>
 
                         <button className='button my-2' type="submit" style={{backgroundColor: '#00cc6d'}}>

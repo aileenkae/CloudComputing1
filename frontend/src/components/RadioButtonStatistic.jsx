@@ -3,7 +3,7 @@ import PieChart from "./ChartExample";
 
 export default function RadioButtonStatistic({question}) {
     return (
-        <div className="scaffold">
+        <div className="scaffold" style={{borderColor: '#00cc6d'}}>
             <div className="flex flex-col">
                 <h3 className="text-xl font-medium">{question.question}</h3>
                 <span className="font-thin text-sm">{question.responses.length + " Answers"}</span>

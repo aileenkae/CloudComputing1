@@ -36,7 +36,7 @@ export function Home() {
         <div className='w-full h-full'>
             <div className='py-12'>
                 <h1 className='text-3xl font-bold text-black mb-12'>
-                   Welcome back {userData.user.name}. Here is your forms
+                   Welcome back {userData.user.name}. Here are your forms
                 </h1>
 
                 <div className='grid grid-cols-12 gap-4'>

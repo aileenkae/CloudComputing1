@@ -21,7 +21,7 @@ export default function SingleLineResponse(props) {
 
     return (
         <div
-            className="w-full bg-white border-t-8 border-indigo-700 rounded-xl min-h-content flex flex-col py-8 px-12">
+            className="w-full bg-white border-t-8 rounded-xl min-h-content flex flex-col py-8 px-12" style={{borderColor: '#00cc6d'}}>
             <h1 className="text-4xl font-bold mb-4">{props.question.question}</h1>
 
             <FormControl>
