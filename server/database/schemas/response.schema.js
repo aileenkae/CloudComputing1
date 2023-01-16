@@ -29,7 +29,7 @@ const ResponseSchema = new mongoose.Schema({
 
 	answer: String
 }, {timestamps: true});
-
+//plugin is used to create the relationship between the form and the responses
 ResponseSchema.plugin(relationship, { relationshipPathName: 'form' })
 ResponseSchema.plugin(relationship, { relationshipPathName: 'user' })
 ResponseSchema.plugin(relationship, { relationshipPathName: 'question' })

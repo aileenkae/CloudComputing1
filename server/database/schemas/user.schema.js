@@ -1,30 +1,30 @@
 const mongoose = require('mongoose');
-
+//mongoose-findorcreate is used to find or create a user in the database
 const findOrCreate = require("mongoose-findorcreate");
 
 const userSchema = new mongoose.Schema({
-    email: {
+    email: { //This is the email of the user
         type: String,
         required: true,
         unique: true
     },
 
-    password: {
+    password: { //This is the password of the user
         type: String,
         required: true,
-        minlength: 5
+        minlength: 5 //This is the minimum length of the password
     },
 
     name: {
         type: String
     },
 
-    forms: [{
+    forms: [{ //Array of forms to store the forms of the user
         type: mongoose.Schema.Types.ObjectId,
         ref: "Form"
     }],
 
-    responses: [{
+    responses: [{ //Array of responses to store the responses of the user
         type: mongoose.Schema.Types.ObjectId,
         ref: "Response"
     }],

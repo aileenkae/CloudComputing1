@@ -7,6 +7,7 @@ const ObjectId = mongoose.Types.ObjectId;
 
 const responseController = express.Router();
 
+//this is getting all the responses from the database by the form id
 responseController.get('/by-form/:formId', async (req, res) => {
     try {
         const formId = new ObjectId(req.params.formId);
@@ -45,9 +46,9 @@ responseController.post('/', auth, async (req, res) => {
         res.send("Successfully stored!")
 
     } catch (error) {
-        console.log(error)
+        console.log(error) //this is logging the error to the console,if there is any error
         res.status(400).send(error)
     }
 })
-
+//exporting the router where we have all the routes to be used in server.js
 module.exports = responseController

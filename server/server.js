@@ -6,29 +6,29 @@ const controllers = require('./controller');
 
 const app = express();
 
-require("dotenv").config({path: "./config.env"});
+require("dotenv").config({path: "./config.env"}); //this is getting the config.env file for the environment variables
 
-app.use(cors());
-app.use(express.json());
+app.use(cors()); //this is allowing us to use cors
+app.use(express.json()); //this is allowing us to use json
 
 
-app.use(
+app.use( //this is allowing us to use sessions and cookies
     session({secret: "Our little secret.", resave: false, saveUninitialized: false})
 );
 
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 6000; //this is getting the port from the environment variables
 
-app.listen(port, () => {
-    mongoose.connect(process.env.ATLAS_URI, {
+app.listen(port, () => { //this is listening to the port, and then connecting to the database
+    mongoose.connect(process.env.ATLAS_URI, { //this is connecting to the database
         useNewUrlParser: true,
         useUnifiedTopology: true
-    }).then(() => {
+    }).then(() => { //this is logging that we are connected to the database
         console.log(`Conneted to mongoDB at ${process.env.ATLAS_URI}`);
     });
 
-    console.log(`Server is running on port: ${port}`);
+    console.log(`Server is running on port: ${port}`); //this is logging that we are connected to the server
 });
 
 app.use('/', controllers.userController);
 app.use('/forms', controllers.formController);
-app.use('/responses', controllers.responseController)
+app.use('/response', controllers.responseController)
