@@ -11,9 +11,11 @@ export default function FormItem(props) {
     return (
         <Card className='w-full'>
             <CardActionArea>
-                <div className='w-full h-full py-8 flex items-center justify-center'>
-                    <img className='w-1/3 mt-2' src={FormPreviewIcon} alt=""/>
-                </div>
+                <Link to="/form" state={{...props.form, isEditing: true}}>
+                    <div className='w-full h-full py-8 flex items-center justify-center'>
+                        <img className='w-1/3 mt-2' src={FormPreviewIcon} alt=""/>
+                    </div>
+                </Link>
                 <CardContent>
                     <Typography gutterBottom="gutterBottom" variant="h5" component="div">
                         {props.form.name}
