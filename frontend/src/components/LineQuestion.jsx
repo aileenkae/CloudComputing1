@@ -16,7 +16,7 @@ export default function LineQuestion(props) {
     }
 
     return (
-        <div className="w-full bg-white border-t-8 border-indigo-700 rounded-xl flex flex-col">
+        <div className="w-full bg-white border-t-8 rounded-xl flex flex-col" style={{borderColor: '#00cc6d'}}>
             <div className="my-8 mx-12">
                 <input
                     value={question.question}

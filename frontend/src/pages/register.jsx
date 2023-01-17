@@ -80,12 +80,12 @@ export function Register() {
                             type="password"
                             autoComplete="current-password"/>
 
-                        <button className='button my-2' type="submit">
+                        <button className='button my-2' type="submit" style={{backgroundColor: '#00cc6d'}}>
                             Register
                         </button>
 
                         <div className="flex gap-12 items-center justify-between">
-                            <Link href="/login">
+                            <Link href="/login" style={{color: '#00a357'}}>
                                 Already have an account? Sign in
                             </Link>
                         </div>

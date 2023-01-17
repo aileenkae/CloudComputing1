@@ -19,5 +19,7 @@ export default function Question(props) {
                 question={props.question}
                 onDelete={() => props.onDelete(props.question)}
                 onChange={props.onChange}/>
+        default:
+            return <h1>Type not found</h1>
     }
 }

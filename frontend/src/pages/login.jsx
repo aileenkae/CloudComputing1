@@ -16,10 +16,8 @@ export function Login() {
     const {setUserData} = useContext(userContext);
     const navigate = useNavigate();
 
-    // function to handle form submission
     const submit = async (e) => {
         e.preventDefault();
-        // create an object with the email and password
         try {
             const loginUser = {
                 email,
@@ -33,7 +31,6 @@ export function Login() {
             localStorage.setItem("auth-token", loginResponse.data.token);
             navigate('/')
         } catch (err) {
-            // if there's an error, set the error state with the error message
             err.response.data.msg && setError(err.response.data.msg)
         }
     };
@@ -71,19 +68,19 @@ export function Login() {
                             autoComplete="current-password"/>
 
                         <FormControlLabel
-                            control={<Checkbox value = "remember" color = "primary" />}
+                            control={<Checkbox value = "remember" style={{color: '#00cc6d'}} />}
                             label="Remember me"/>
 
-                        <button className='button my-2' type="submit">
+                        <button className='button my-2' type="submit" style={{backgroundColor: '#00cc6d'}}>
                             Sign In
                         </button>
 
                         <div className="flex gap-12 items-center justify-between">
-                            <Link href="/forgot-password">
+                            <Link href="/forgot-password" style={{color: '#00a357'}}>
                                 Forgot password?
                             </Link>
 
-                            <Link href="/register">
+                            <Link href="/register" style={{color: '#00a357'}}>
                                 New here? Sign Up
                             </Link>
                         </div>

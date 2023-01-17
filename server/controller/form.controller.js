@@ -2,6 +2,7 @@ const express = require("express");
 const Form = require('../database/models/form.model');
 const Question = require('../database/models/question.model');
 const AnswerVariants = require('../database/models/answer_variants.model');
+const Response = require('../database/models/response.model');
 const mongoose = require('mongoose');
 const auth = require("../middleware/auth");
 
@@ -86,10 +87,14 @@ formController.delete("/:id", auth, async (req, res) => {
             res.status(404).send('Form not found or already deleted');
         } else {
             if (form.user.equals(req.user)) {
-                form.remove(function (err) {
+                form.remove(async function (err) {
                     if (err) {
                         return res.status(500).send(err)
                     }
+
+                    await Response.deleteMany({form: id})
+                    await AnswerVariants.deleteMany({form: id})
+                    await Question.deleteMany({form: id})
 
                     return res.status(202).send("Form Deleted")
                 });

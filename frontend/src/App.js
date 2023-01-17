@@ -13,6 +13,7 @@ function App() {
                         <Route index="index" element={<pages.Home />}/>
                         <Route path="/form" element={<pages.Form />}/>
                         <Route path="/response/:id" element={<pages.Response />}/>
+                        <Route path="/statistic/:id" element={<pages.Statistic />}/>
                         <Route path="/login" element={<pages.Login />}/>
                         <Route path="/register" element={<pages.Register />}/>
                     </Routes>

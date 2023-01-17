@@ -8,7 +8,6 @@ export function Home() {
     const {userData} = useContext(userContext);
     const [forms, setForms] = useState([]);
 
-    // useEffect hook to fetch forms on component mount and when userData changes
     useEffect(() => {
         const getForms = async () => {
             const formResponse = await axios.get('http://localhost:8000/forms', {
@@ -23,7 +22,6 @@ export function Home() {
         getForms();
     }, [userData]);
 
-    // function to handle form deletion
     const handleFormDelete = (form) => {
         axios.delete('http://localhost:8000/forms/' + form._id, {
             headers: {
