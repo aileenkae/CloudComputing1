@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {Card, CardActionArea, CardActions, IconButton, CardContent, Typography} from '@mui/material';
+import React, {useState, useContext} from 'react';
+import {Card, CardActionArea, CardActions, IconButton, CardContent, Typography, Alert} from '@mui/material';
 import FormPreviewIcon from '../images/form_preview_icon.png' 
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -8,6 +8,9 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit"
 import IosShareIcon from "@mui/icons-material/IosShare"
 
 export default function FormItem(props) {
+    const [message, setMessage] = useState("");
+
+
     return (
         <Card className='w-full'>
             <CardActionArea>
@@ -31,7 +34,10 @@ export default function FormItem(props) {
                         <ModeEditIcon />
                     </IconButton>
                 </Link>
-                <IconButton onClick={() => {navigator.clipboard.writeText("http://localhost:3000/response/" + props.form._id)}}>
+                <IconButton onClick={() => {
+                    setMessage("Test");
+                    navigator.clipboard.writeText("http://localhost:3000/response/" + props.form._id);
+                    }}>
                     <IosShareIcon />
                 </IconButton>
                 <Link to={`/statistic/${props.form._id}`}>
@@ -43,6 +49,7 @@ export default function FormItem(props) {
                     <DeleteIcon />
                 </IconButton>
             </CardActions>
+            {message && <Alert severity="info">The link was copied !</Alert>}
         </Card>
     );
 }
