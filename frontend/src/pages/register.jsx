@@ -28,7 +28,7 @@ export function Register() {
             const response = await axios.post("http://localhost:8000/register", user);
             setUserData({token: response.data.token, user: response.data.user});
             localStorage.setItem("auth-token", response.data.token);
-            navigate('/')
+            navigate('/login')
         } catch (err) {
             err.response.data.msg && setError(err.response.data.msg)
         }
