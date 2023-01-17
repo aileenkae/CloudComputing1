@@ -102,7 +102,7 @@ export function Form() {
 
             <AddQuestionButton onClick={addQuestion}/>
 
-            <Button id="submit" aria-haspopup="true" method="POST" onClick={handleSubmit}>
+            <Button id="submit" aria-haspopup="true" method="POST" onClick={handleSubmit} style={{color: '#00a357'}}>
                 Speichern
             </Button>
         </div>

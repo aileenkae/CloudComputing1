@@ -2,7 +2,7 @@ import React from "react";
 
 export function FormHeader(props) {
     return (
-        <div className="w-full bg-white border-t-8 px-12 py-8 border-indigo-700 rounded-xl">
+        <div className="w-full bg-white border-t-8 px-12 py-8 rounded-xl" style={{borderColor: '#00cc6d'}}>
             <input
                 type="text"
                 className="question-field text-3xl"

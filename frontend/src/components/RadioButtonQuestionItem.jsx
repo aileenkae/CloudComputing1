@@ -24,7 +24,7 @@ export default function RadioButtonQuestionItem(props) {
             </div>
 
             <Button onClick={props.onDelete}>
-                <ClearIcon/>
+                <ClearIcon style={{color: '#00a357'}}/>
             </Button>
         </div>
     );
