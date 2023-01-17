@@ -57,7 +57,7 @@ export function Form() {
                         "x-auth-token": userData.token
                     }
                 }).then(response => {
-                    // navigate('/')
+                    navigate('/')
                 }).catch(err => {
                     err.response.data.msg && setError(err.response.data.msg)
                 })

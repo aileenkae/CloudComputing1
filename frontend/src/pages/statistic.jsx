@@ -6,10 +6,10 @@ import {CircularProgress} from "@mui/material";
 import userContext from "../context/userContext";
 import ErrorNotice from "../components/ErrorNotice";
 import {useParams} from 'react-router-dom';
-import PieChart from "../components/ChartExample";
 
 import uuid from "react-uuid";
 import StatisticItem from "../components/StatisticItem";
+
 export function Statistic(props) {
     const {userData} = useContext(userContext);
     const params = useParams()
