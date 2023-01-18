@@ -20,7 +20,7 @@ export function Response(props) {
     useEffect(() => {
         const getForm = async () => {
             const formResponse = await axios.get(
-                'http://localhost:8000/statistic/' + params.id,
+                'https://hdm-rest-api-yzluwpqwsa-ey.a.run.app/statistic/' + params.id,
                 {
                     headers: {
                         "x-auth-token": userData.token
