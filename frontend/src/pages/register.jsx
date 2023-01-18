@@ -25,7 +25,7 @@ export function Register() {
                 password,
                 passwordConfirmation
             };
-            const response = await axios.post("http://localhost:8000/register", user);
+            const response = await axios.post("https://hdm-rest-api-yzluwpqwsa-ey.a.run.app/register", user);
             setUserData({token: response.data.token, user: response.data.user});
             localStorage.setItem("auth-token", response.data.token);
             navigate('/')

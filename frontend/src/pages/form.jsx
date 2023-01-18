@@ -52,7 +52,7 @@ export function Form() {
             };
     
             if (location.state.isEditing) {
-                axios.put('http://localhost:8000/forms/' + location.state._id, form, {
+                axios.put('https://hdm-rest-api-yzluwpqwsa-ey.a.run.app/forms/' + location.state._id, form, {
                     headers: {
                         "x-auth-token": userData.token
                     }
@@ -62,7 +62,7 @@ export function Form() {
                     err.response.data.msg && setError(err.response.data.msg)
                 })
             } else {
-                axios.post('http://localhost:8000/forms', form, {
+                axios.post('https://hdm-rest-api-yzluwpqwsa-ey.a.run.app/forms', form, {
                     headers: {
                         "x-auth-token": userData.token
                     }

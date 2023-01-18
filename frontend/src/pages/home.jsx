@@ -10,7 +10,7 @@ export function Home() {
 
     useEffect(() => {
         const getForms = async () => {
-            const formResponse = await axios.get('http://localhost:8000/forms', {
+            const formResponse = await axios.get('https://hdm-rest-api-yzluwpqwsa-ey.a.run.app/forms', {
                 headers: {
                     "x-auth-token": userData.token
                 }
@@ -23,7 +23,7 @@ export function Home() {
     }, [userData]);
 
     const handleFormDelete = (form) => {
-        axios.delete('http://localhost:8000/forms/' + form._id, {
+        axios.delete('https://hdm-rest-api-yzluwpqwsa-ey.a.run.app/forms/' + form._id, {
             headers: {
                 "x-auth-token": userData.token
             }

@@ -24,7 +24,7 @@ export function Login() {
                 password
             };
             const loginResponse = await axios.post(
-                "http://localhost:8000/login",
+                "https://hdm-rest-api-yzluwpqwsa-ey.a.run.app/login",
                 loginUser
             );
             setUserData({token: loginResponse.data.token, user: loginResponse.data.user});
