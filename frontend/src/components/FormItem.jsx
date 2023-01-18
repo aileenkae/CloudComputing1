@@ -36,7 +36,7 @@ export default function FormItem(props) {
                 </Link>
                 <IconButton onClick={() => {
                     setMessage("Test");
-                    navigator.clipboard.writeText("http://localhost:3000/response/" + props.form._id);
+                    navigator.clipboard.writeText("https://hdm-rest-api-yzluwpqwsa-ey.a.run.app/response/" + props.form._id);
                     }}>
                     <IosShareIcon />
                 </IconButton>
