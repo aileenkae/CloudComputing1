@@ -18,7 +18,7 @@ const AuthVerify = (props) => {
             navigate('/login')
         } else {
             axios
-                .get("http://localhost:8000/me", {
+                .get("https://hdm-rest-api-yzluwpqwsa-ey.a.run.app/me", {
                     headers: {
                         "x-auth-token": token
                     }
