@@ -57,7 +57,7 @@ export function Response(props) {
         event.preventDefault();
 
         try {
-            axios.post('http://localhost:8000/responses', answers, {
+            axios.post('https://hdm-rest-api-yzluwpqwsa-ey.a.run.app/responses', answers, {
                 headers: {
                     "x-auth-token": userData.token
                 }
