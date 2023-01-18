@@ -10,7 +10,7 @@ export default function Header() {
                 <div>
                     <a className='text-white w-min flex items-center text-3xl' href="/">
                         <AdbIcon className='mr-2 text-gray-100 text-5xl'/>
-                        Forms
+                        HdMForms
                     </a>
                 </div>
 
