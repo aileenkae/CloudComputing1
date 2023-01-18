@@ -28,7 +28,7 @@ export function Register() {
             const response = await axios.post("https://hdm-rest-api-yzluwpqwsa-ey.a.run.app/register", user);
             setUserData({token: response.data.token, user: response.data.user});
             localStorage.setItem("auth-token", response.data.token);
-            navigate('/')
+            navigate('/login')
         } catch (err) {
             err.response.data.msg && setError(err.response.data.msg)
         }
@@ -80,12 +80,12 @@ export function Register() {
                             type="password"
                             autoComplete="current-password"/>
 
-                        <button className='button my-2' type="submit">
+                        <button className='button my-2' type="submit" style={{backgroundColor: '#00cc6d'}}>
                             Register
                         </button>
 
                         <div className="flex gap-12 items-center justify-between">
-                            <Link href="/login">
+                            <Link href="/login" style={{color: '#00a357'}}>
                                 Already have an account? Sign in
                             </Link>
                         </div>

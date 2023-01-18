@@ -57,7 +57,7 @@ export function Form() {
                         "x-auth-token": userData.token
                     }
                 }).then(response => {
-                    // navigate('/')
+                    navigate('/')
                 }).catch(err => {
                     err.response.data.msg && setError(err.response.data.msg)
                 })
@@ -83,7 +83,7 @@ export function Form() {
     }
 
     return (
-        <div className="flex flex-col items-center gap-5 justify-top">
+        <div className="w-full flex flex-col items-center gap-5 justify-top">
             {error && <ErrorNotice message={error} clearError={() => setError(undefined)}/>}
 
             <FormHeader
@@ -102,7 +102,7 @@ export function Form() {
 
             <AddQuestionButton onClick={addQuestion}/>
 
-            <Button id="submit" aria-haspopup="true" method="POST" onClick={handleSubmit}>
+            <Button id="submit" aria-haspopup="true" method="POST" onClick={handleSubmit} style={{color: '#00a357'}}>
                 Speichern
             </Button>
         </div>

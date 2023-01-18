@@ -13,6 +13,12 @@ const AnswerVariantsSchema = new mongoose.Schema({
         ref: 'Form',
     },
 
+    responses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Response",
+        autopopulate: true
+    }],
+
     answer: String,
 }, {timestamps: true});
 
