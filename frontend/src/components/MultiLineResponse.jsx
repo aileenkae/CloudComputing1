@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import {TextField} from "@mui/material";
+// This component will be used to display a single line response (text input)
 export default function SingleLineResponse(props) {
     const [answer, setAnswer] = useState(props.answer);
-
+    // This function will be used to handle the change of the response text
     const handleChage = (event) => {
         answer.answer = event.target.value
-
+        // This is the answer object that will be used to store the answer data
         setAnswer(
             {
                 _id: answer._id,

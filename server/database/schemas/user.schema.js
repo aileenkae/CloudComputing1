@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const findOrCreate = require("mongoose-findorcreate");
-
+const findOrCreate = require("mongoose-findorcreate");//To find or create a user
+// User is a model that is used to create a new user
 const userSchema = new mongoose.Schema({
     email: {
         type: String,

@@ -1,5 +1,6 @@
 import React from "react";
 import uuid from "react-uuid";
+// This component will be used to display the line statistic of a question 
 export default function LineStatistic({question}) {
     return (
         <div className="scaffold" style={{borderColor: '#00cc6d'}}>
@@ -10,12 +11,12 @@ export default function LineStatistic({question}) {
                 </span>
             </div>
             <span className="w-full p-0.5 bg-gray-200 lg:w-1/3 mb-4"></span>
-
+            
             <div className="flex flex-col gap-2">
                 {
                     question
                         .responses
-                        .map(response => {
+                        .map(response => { // This is the response object. Map over all responses and display them
                             return (
                                 <div
                                     key={uuid()}

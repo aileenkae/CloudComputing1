@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-
+const jwt = require('jsonwebtoken'); //Is used to verify the token that is sent to the server
+// Middleware function to check if the user is authenticated or not
 const auth = (req, res, next) => {
     try {
         const token = req.header("x-auth-token");

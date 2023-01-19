@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-
+// This component will be used to display a single line question (text input) 
 export default function LineQuestion(props) {
+    // This is the question object that will be used to store the question data
     const [question, setQuestion] = useState(props.question);
-
+    // This function will be used to handle the change of the question text
     const handleChage = (event) => {
         setQuestion({
             _id: question._id,

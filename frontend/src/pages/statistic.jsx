@@ -9,13 +9,13 @@ import {useParams} from 'react-router-dom';
 
 import uuid from "react-uuid";
 import StatisticItem from "../components/StatisticItem";
-
+// This component will be used to display the statistic page in the frontend application
 export function Statistic(props) {
     const {userData} = useContext(userContext);
     const params = useParams()
     const [form, setForm] = useState();
     const [error, setError] = useState();
-
+    // This useEffect hook will be used to get the form from the backend
     useEffect(() => {
         const getForm = async () => {
             const formResponse = await axios.get(
@@ -32,7 +32,7 @@ export function Statistic(props) {
 
         getForm();
     }, [userData, params]);
-
+    // IF the form is loaded, the statistic page will be displayed
     if (form) {
         return (
             <div className="px-12 w-full flex flex-col items-center gap-5 justify-top">
@@ -49,7 +49,7 @@ export function Statistic(props) {
                 }
             </div>
         );
-    } else {
+    } else { // If the form is not loaded, a loading indicator will be displayed
         return (
             <div className="flex items-center w-screen h-screen justify-center">
                 <CircularProgress/>

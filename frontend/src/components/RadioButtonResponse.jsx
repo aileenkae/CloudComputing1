@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {FormControl, RadioGroup, FormControlLabel, Radio} from "@mui/material";
-
+// This is the component that will be used to display the radio button question item (single answer) 
 export default function SingleLineResponse(props) {
     const [answer, setAnswer] = useState(props.answer);
 
@@ -18,7 +18,7 @@ export default function SingleLineResponse(props) {
 
         props.onChange(answer)
     }
-
+    // This is the answer object that will be used to store the answer data so that it can be sent to the backend
     return (
         <div
             className="w-full bg-white border-t-8 rounded-xl min-h-content flex flex-col py-8 px-12" style={{borderColor: '#00cc6d'}}>

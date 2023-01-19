@@ -2,7 +2,7 @@ import * as React from 'react';
 import AdbIcon from '@mui/icons-material/Description';
 import SearchInput from './SearchInput';
 import AuthOptions from './authOptions';
-
+// This component will be used to display the header of the page (logo, search bar and login/register buttons)
 export default function Header() {
     return (
         <div style={{position:'sticky', padding: 5,  display:'flex', backgroundColor:'#00cc6d', maxWidth:'xl'}}>

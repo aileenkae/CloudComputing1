@@ -1,10 +1,11 @@
 import React from "react";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
-import RadioButtonQuestionItem from "./RadioButtonQuestionItem";
+import RadioButtonQuestionItem from "./RadioButtonQuestionItem"; // This is the component that will be used to display the radio button question
 import uuid from "react-uuid";
-
+// This component will be used to display the radio button question
 class RadioButtonQuestion extends React.Component {
+    // This is the constructor of the component that will be used to initialize the state
     constructor(props) {
         super(props);
     
@@ -70,7 +71,7 @@ class RadioButtonQuestion extends React.Component {
         this.setState({question: question})
         this.props.onChange(question)
     }
-
+    // This function will be used to render the component to the DOM
     render() {
         return (
             <div className="w-full bg-white border-t-8 rounded-xl flex flex-col" style={{borderColor: '#00cc6d'}}>

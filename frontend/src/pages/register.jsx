@@ -6,7 +6,7 @@ import axios from 'axios';
 import ErrorNotice from '../components/ErrorNotice';
 import {useNavigate} from 'react-router-dom';
 import Link from '@mui/material/Link';
-
+// This component will be used to display the register page in the frontend application
 export function Register() {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
@@ -15,7 +15,7 @@ export function Register() {
     const [error, setError] = useState();
     const {setUserData} = useContext(userContext);
     const navigate = useNavigate();
-
+    // This function will be used to handle the submit event of the form with a POST request to the backend
     const submit = async (e) => {
         e.preventDefault();
         try {

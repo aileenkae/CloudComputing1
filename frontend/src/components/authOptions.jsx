@@ -2,11 +2,11 @@ import React, {useContext} from 'react';
 import userContext from '../context/userContext';
 import {Link, useNavigate} from 'react-router-dom';
 
-
+// This component will be used to display the login and register buttons
 export default function AuthOptions() {
     const {userData, setUserData} = useContext(userContext);
     const navigate = useNavigate();
-
+    // This function will be used to logout the user
     const logout = () => {
         setUserData({token: undefined, user: undefined})
         localStorage.setItem("auth-token", "");

@@ -4,9 +4,9 @@ const AnswerVariants = require('../database/models/answer_variants.model');
 const mongoose = require('mongoose');
 const auth = require("../middleware/auth");
 const ObjectId = mongoose.Types.ObjectId;
-
+//ObjectId is a function that takes a string and converts it to a MongoDB ObjectId
 const responseController = express.Router();
-
+//Get all forms of the user by user ID
 responseController.get('/by-form/:formId', async (req, res) => {
     try {
         const formId = new ObjectId(req.params.formId);
@@ -18,7 +18,7 @@ responseController.get('/by-form/:formId', async (req, res) => {
         res.send(error)
     }
 })
-
+//Post form to the database by user ID
 responseController.post('/', auth, async (req, res) => {
     try {
         req.body.forEach(async answer => {

@@ -8,12 +8,12 @@ const auth = require("../middleware/auth");
 const userController = express.Router();
 
 require("dotenv").config({path: "./config.env"});
-
+//Logout  -  Delete token
 userController.get("/logout", function (req, res) {
     req.logout()
     res.redirect("http://localhost:3000/");
 });
-
+//Check if token is valid -  if valid return user data else return error message    
 userController.post("/register", async (req, res) => {
     try {
         let {email, password, passwordConfirmation, name} = req.body;
@@ -44,7 +44,7 @@ userController.post("/register", async (req, res) => {
     }
 });
 
-// Login
+// Login   
 userController.post("/login", async (req, res) => {
     try {
         const {email, password} = req.body;
@@ -82,7 +82,7 @@ userController.post("/login", async (req, res) => {
     }
 });
 
-// Delete
+//Delete  
 userController.delete("/delete", auth, async (req, res) => {
     try {
         const deletedUser = await User.findByIdAndDelete(req.user);

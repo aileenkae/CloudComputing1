@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ModeEditIcon from "@mui/icons-material/ModeEdit"
 import IosShareIcon from "@mui/icons-material/IosShare"
 
+// This component will be used to display the form item in the form list page
 export default function FormItem(props) {
     const [message, setMessage] = useState("");
 

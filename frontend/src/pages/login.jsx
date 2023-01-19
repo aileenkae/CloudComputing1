@@ -9,13 +9,14 @@ import axios from 'axios';
 import ErrorNotice from '../components/ErrorNotice';
 import {useNavigate} from 'react-router-dom';
 
+// This component will be used to display the login page in the frontend application 
 export function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState();
     const {setUserData} = useContext(userContext);
     const navigate = useNavigate();
-
+    // This function will be used to handle the submit event of the form with a POST request to the backend
     const submit = async (e) => {
         e.preventDefault();
         try {

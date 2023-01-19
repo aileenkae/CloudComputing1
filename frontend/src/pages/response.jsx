@@ -8,15 +8,15 @@ import ErrorNotice from "../components/ErrorNotice";
 import {useNavigate, useParams} from 'react-router-dom';
 import {ResponseHeader} from "../components/ResponseHeader";
 import ResponseItem from "../components/ResponseItem";
-
+// This component will be used to display the response page in the frontend application
 export function Response(props) {
     const {userData} = useContext(userContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate() // This hook will be used to navigate to another page
     const params = useParams()
     const [answers, setAnswers] = useState([]);
     const [form, setForm] = useState();
     const [error, setError] = useState();
-
+    // This useEffect hook will be used to get the form from the backend
     useEffect(() => {
         const getForm = async () => {
             const formResponse = await axios.get(
@@ -52,7 +52,7 @@ export function Response(props) {
         answers[index] = answer
         setAnswers(answers)
     }
-
+    // This function will be used to handle the submit event of the form with a POST request to the backend
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -70,7 +70,7 @@ export function Response(props) {
             err.response.data.msg && setError(err.response.data.msg)
         }
     };
-
+    // If the form is not null, the form will be displayed in the frontend application
     if (form) {
         return (
             <div className="px-12 w-full flex flex-col items-center gap-5 justify-top">

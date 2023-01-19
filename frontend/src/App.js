@@ -6,6 +6,7 @@ import DefaultLayout from './layouts/default';
 
 function App() {
     return (
+        // BrowserRouter is a wrapper for the entire app that allows us to use the <Route> component to render different components based on the URL
         <BrowserRouter>
             <AuthVerify>
                 <DefaultLayout>

@@ -1,15 +1,15 @@
 const express = require("express");
 const passport = require("passport");
 const User = require('../database/models/user.model')
-
+//Google Strategy is a passport strategy for authenticating with Google using the OAuth 2.0 API.
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 const userController = express.Router();
 
 require("dotenv").config({path: "./config.env"});
-
+//Passport is a middleware that is used to authenticate requests
 passport.use(User.createStrategy());
-
+//SerializeUser determines which data of the user object should be stored in the session. The result of the serializeUser method is attached to the session as req.session.passport.user = {}
 passport.serializeUser(function (user, done) {
     done(null, user.id);
 });

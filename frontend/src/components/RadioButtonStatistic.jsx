@@ -1,6 +1,6 @@
 import React from "react";
 import PieChart from './PieChart'
-
+// This component will be used to display the statistic for the question type "multiple choice" (radio button) 
 export default function RadioButtonStatistic({question}) {
     return (
         <div className="scaffold" style={{borderColor: '#00cc6d'}}>

@@ -10,12 +10,12 @@ import userContext from "../context/userContext";
 import uuid from "react-uuid";
 import ErrorNotice from "../components/ErrorNotice";
 import {useNavigate, useLocation} from 'react-router-dom';
-
+// This component will be used to display the form page in the frontend application 
 export function Form() {
     const {userData} = useContext(userContext);
     const navigate = useNavigate()
     const location = useLocation()
-
+    // This state will be used to store the questions of the form
     const [questions, setQuestions] = useState(location.state.questions)
     const [formTitle, setFormTitle] = useState(location.state.name);
     const [formDescription, setFormDescription] = useState(location.state.description)
@@ -40,7 +40,7 @@ export function Form() {
         )
         questions[index] = editedQuestion
     }
-
+    // This function will be used to handle the submit event of the form with a POST request to the backend
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -81,7 +81,7 @@ export function Form() {
     const deleteQuestion = (question) => {
         setQuestions(questions.filter((q) => q._id !== question._id))
     }
-
+    
     return (
         <div className="w-full flex flex-col items-center gap-5 justify-top">
             {error && <ErrorNotice message={error} clearError={() => setError(undefined)}/>}
